@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="apefuscator:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/test_jar</output-path>
+    <root id="archive" name="selfobf.jar">
+      <element id="module-output" name="apefuscator" />
+    </root>
+  </artifact>
+</component>
