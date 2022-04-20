@@ -4,6 +4,7 @@ import me.divine.apefuscator.Apefuscator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.objectweb.asm.Opcodes;
+import org.objectweb.asm.tree.MethodNode;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,9 +12,18 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class TestTransformer extends me.divine.apefuscator.transformers.Transformer implements Opcodes {
     private final Logger LOGGER = LogManager.getLogger(TestTransformer.class);
+    private Map<MethodNode, String[]> methodMap = new HashMap<>();
     private Map<String, String> localVariableMap = new HashMap<>();
+    char primaryChar = '\u0D9E';
+    char secondaryChar = '\u0D9D';
     public TestTransformer() {
         super("TestTransformer", "Allows me to test ASM");
+    }
+
+    public TestTransformer(char primaryChar, char secondaryChar) {
+        this();
+        this.primaryChar = primaryChar;
+        this.secondaryChar = secondaryChar;
     }
 
     @Override
@@ -75,7 +85,7 @@ public class TestTransformer extends me.divine.apefuscator.transformers.Transfor
     private String getName(int length) {
         StringBuilder name = new StringBuilder();
         for (int i = 0; i < length; i++) {
-            name.append(ThreadLocalRandom.current().nextInt(1, 6) == 5 ? "ඝ" : '\u0D9E');
+            name.append(ThreadLocalRandom.current().nextInt(1, 6) == 5 ? '\u0D9D' : '\u0D9E');
         }
         if (localVariableMap.containsValue(name.toString())) {
             return getName(name.length() + ThreadLocalRandom.current().nextInt(1, 5));
