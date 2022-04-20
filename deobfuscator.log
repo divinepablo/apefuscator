@@ -1,220 +1,76 @@
-[11:21:55] [main/INFO] - Ignoring 1230 classes
-[11:21:55] [main/INFO] - Adding transformer: TestTransformer
-[11:21:55] [main/WARN] - Output file already exist, data will be overwritten
-[11:21:55] [main/INFO] - Starting Apefuscator
-[11:21:55] [main/INFO] - Loading input file: test/irc.jar
-[11:21:59] [main/INFO] - Loaded input file: test/irc.jar
+[19:42:09] [main/INFO] - Ignoring 3 classes
+[19:42:09] [main/INFO] - Adding transformer: Name
+[19:42:09] [main/WARN] - Output file already exist, data will be overwritten
+[19:42:09] [main/INFO] - Starting Apefuscator
+[19:42:09] [main/INFO] - Loading input file: test/irc.jar
+[19:42:13] [main/INFO] - Loaded input file: test/irc.jar
 
-[11:21:59] [main/INFO] - Transforming classes
-[11:21:59] [main/INFO] - Transforming class: Author
-[11:21:59] [main/INFO] - Found method: <init>
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method <init>
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඞඞඞඞඞඞඞඞඞ
-[11:21:59] [main/INFO] - Local variable: 1 has name name in method <init>
-[11:21:59] [main/INFO] - Renamed local variable: 1 to ඞඞඞඞඞඞඞ
-[11:21:59] [main/INFO] - Local variable: 2 has name uid in method <init>
-[11:21:59] [main/INFO] - Renamed local variable: 2 to ඞඞඞඞඞඞඝඝඞඞ
-[11:21:59] [main/INFO] - Found method: getName
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method getName
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඞඞඞඞඝඞඞඞඞඞ
-[11:21:59] [main/INFO] - Found method: getUid
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method getUid
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඞඞඞඞඞඞඞඞඞ
-[11:21:59] [main/INFO] - Found method: component1
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method component1
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඝඞඝඞඞඞඝඞඞඞඝඞ
-[11:21:59] [main/INFO] - Found method: component2
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method component2
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඝඞඞඝඞඞ
-[11:21:59] [main/INFO] - Found method: copy
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method copy
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඞඞඞඞ
-[11:21:59] [main/INFO] - Local variable: 1 has name name in method copy
-[11:21:59] [main/INFO] - Renamed local variable: 1 to ඞඝඞඞඞඞඞඝඞඝඞ
-[11:21:59] [main/INFO] - Local variable: 2 has name uid in method copy
-[11:21:59] [main/INFO] - Renamed local variable: 2 to ඞඝඞඝඞඝඞඞඞ
-[11:21:59] [main/INFO] - Found method: copy$default
-[11:21:59] [main/INFO] - Found method: toString
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method toString
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඝඞඞඞඞඝඝඞ
-[11:21:59] [main/INFO] - Found method: hashCode
-[11:21:59] [main/INFO] - Local variable: 1 has name result in method hashCode
-[11:21:59] [main/INFO] - Renamed local variable: 1 to ඞඝඞඞඞඝඞඝඝඞ
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method hashCode
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඞඞඞඞඝඞ
-[11:21:59] [main/INFO] - Found method: equals
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method equals
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඞඞඞඞඞඞඞඞඝ
-[11:21:59] [main/INFO] - Local variable: 1 has name other in method equals
-[11:21:59] [main/INFO] - Renamed local variable: 1 to ඝඞඞඝඝඞඞඞඞඞඞඞඝඞ
-[11:21:59] [main/INFO] - Transforming class: Main
-[11:21:59] [main/INFO] - Found method: <init>
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method <init>
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඝඞඞඞඞඞඞඞඝඞඞඞඝ
-[11:21:59] [main/INFO] - Found method: main
-[11:21:59] [main/INFO] - Local variable: 3 has name writer in method main
-[11:21:59] [main/INFO] - Renamed local variable: 3 to ඞඞඞඞඞඝඞඝඞ
-[11:21:59] [main/INFO] - Local variable: 4 has name obj in method main
-[11:21:59] [main/INFO] - Renamed local variable: 4 to ඝඞඞඝඞඞඞඞඞ
-[11:21:59] [main/INFO] - Local variable: 3 has name e in method main
-[11:21:59] [main/INFO] - Renamed local variable: 3 to ඞඞඞඞඞ
-[11:21:59] [main/INFO] - Local variable: 3 has name reader in method main
-[11:21:59] [main/INFO] - Renamed local variable: 3 to ඝඞඞඞඝඞඞඝඞඞඝ
-[11:21:59] [main/INFO] - Local variable: 4 has name parsed in method main
-[11:21:59] [main/INFO] - Renamed local variable: 4 to ඞඞඞඞඞඞඝඞඞඞඝඝඞඝඞ
-[11:21:59] [main/INFO] - Local variable: 5 has name obj in method main
-[11:21:59] [main/INFO] - Renamed local variable: 5 to ඞඝඝඞඝඞ
-[11:21:59] [main/INFO] - Local variable: 0 has name args in method main
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඞඞඝඞඞඞඞ
-[11:21:59] [main/INFO] - Local variable: 1 has name port in method main
-[11:21:59] [main/INFO] - Renamed local variable: 1 to ඝඞඝඝඞඞ
-[11:21:59] [main/INFO] - Local variable: 2 has name file in method main
-[11:21:59] [main/INFO] - Renamed local variable: 2 to ඞඝඝඝඝඞඞඞ
-[11:21:59] [main/INFO] - Local variable: 3 has name s in method main
-[11:21:59] [main/INFO] - Renamed local variable: 3 to ඞඞඞඞඞඞඞඝ
-[11:21:59] [main/INFO] - Found method: base64Encode
-[11:21:59] [main/INFO] - Local variable: 0 has name input in method base64Encode
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඝඝඞඞඝඞඞඞඞඞ
-[11:21:59] [main/INFO] - Found method: base64Decode
-[11:21:59] [main/INFO] - Local variable: 0 has name input in method base64Decode
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඞඞඞඝඞඞඞඝඝ
-[11:21:59] [main/INFO] - Found method: base64Encode
-[11:21:59] [main/INFO] - Local variable: 0 has name input in method base64Encode
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඞඞඞඝඞ
-[11:21:59] [main/INFO] - Found method: base64Decode
-[11:21:59] [main/INFO] - Local variable: 0 has name input in method base64Decode
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඞඞඞඞඞඞඞඞඞඞඞ
-[11:21:59] [main/INFO] - Transforming class: Message
-[11:21:59] [main/INFO] - Found method: <init>
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method <init>
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඞඝඞඞඞ
-[11:21:59] [main/INFO] - Local variable: 1 has name message in method <init>
-[11:21:59] [main/INFO] - Renamed local variable: 1 to ඝඝඞඝඞඝඞඞඞඞ
-[11:21:59] [main/INFO] - Local variable: 2 has name author in method <init>
-[11:21:59] [main/INFO] - Renamed local variable: 2 to ඞඞඞඞඞඞඞඞඞඞඞඝඞඞ
-[11:21:59] [main/INFO] - Found method: getMessage
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method getMessage
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඞඞඞඞඞ
-[11:21:59] [main/INFO] - Found method: getAuthor
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method getAuthor
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඞඞඞඞඞඞ
-[11:21:59] [main/INFO] - Found method: component1
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method component1
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඞඝඞඞඞ
-[11:21:59] [main/INFO] - Found method: component2
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method component2
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඞඝඞඞඞඞඞඞඞඝ
-[11:21:59] [main/INFO] - Found method: copy
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method copy
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඝඞඞඞඞඞඞඝ
-[11:21:59] [main/INFO] - Local variable: 1 has name message in method copy
-[11:21:59] [main/INFO] - Renamed local variable: 1 to ඞඞඞඝඞඞඞඝඝඝඞඞඞඞ
-[11:21:59] [main/INFO] - Local variable: 2 has name author in method copy
-[11:21:59] [main/INFO] - Renamed local variable: 2 to ඞඞඞඞඞඞඞඝඞඞඞඞඞඝ
-[11:21:59] [main/INFO] - Found method: copy$default
-[11:21:59] [main/INFO] - Found method: toString
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method toString
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඞඞඞඝඞඞඞඞ
-[11:21:59] [main/INFO] - Found method: hashCode
-[11:21:59] [main/INFO] - Local variable: 1 has name result in method hashCode
-[11:21:59] [main/INFO] - Renamed local variable: 1 to ඞඞඞඝඝඞඞ
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method hashCode
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඝඞඞඞඞඝඞඞඞ
-[11:21:59] [main/INFO] - Found method: equals
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method equals
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඞඝඞඞඞඞඝඝඞඝඞඞ
-[11:21:59] [main/INFO] - Local variable: 1 has name other in method equals
-[11:21:59] [main/INFO] - Renamed local variable: 1 to ඞඞඞඝඞඞඞඞඞඞඞ
-[11:21:59] [main/INFO] - Transforming class: ChatServer
-[11:21:59] [main/INFO] - Found method: <init>
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method <init>
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඝඝඞඞඝ
-[11:21:59] [main/INFO] - Local variable: 1 has name port in method <init>
-[11:21:59] [main/INFO] - Renamed local variable: 1 to ඝඞඞඞඞඞඝඞඞ
-[11:21:59] [main/INFO] - Found method: onOpen
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method onOpen
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඞඞඞඞඝඝ
-[11:21:59] [main/INFO] - Local variable: 1 has name conn in method onOpen
-[11:21:59] [main/INFO] - Renamed local variable: 1 to ඞඞඞඞඝඞඞඞඞඞ
-[11:21:59] [main/INFO] - Local variable: 2 has name handshake in method onOpen
-[11:21:59] [main/INFO] - Renamed local variable: 2 to ඞඞඞඞඞඞඞඞඝඞඞඞ
-[11:21:59] [main/INFO] - Found method: onClose
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method onClose
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඞඞඞඞඝඞඞ
-[11:21:59] [main/INFO] - Local variable: 1 has name conn in method onClose
-[11:21:59] [main/INFO] - Renamed local variable: 1 to ඝඞඝඝඞඞඞ
-[11:21:59] [main/INFO] - Local variable: 2 has name code in method onClose
-[11:21:59] [main/INFO] - Renamed local variable: 2 to ඞඞඝඝඞ
-[11:21:59] [main/INFO] - Local variable: 3 has name reason in method onClose
-[11:21:59] [main/INFO] - Renamed local variable: 3 to ඞඞඝඞඞඞඞඝඞඞඞඞඞ
-[11:21:59] [main/INFO] - Local variable: 4 has name remote in method onClose
-[11:21:59] [main/INFO] - Renamed local variable: 4 to ඞඞඞඞඝඞඞඞඞඞ
-[11:21:59] [main/INFO] - Found method: onMessage
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method onMessage
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඝඞඝඞඞඝඞඞඝ
-[11:21:59] [main/INFO] - Local variable: 1 has name conn in method onMessage
-[11:21:59] [main/INFO] - Renamed local variable: 1 to ඞඞඞඞඝඞඞඞඞඞඞඞ
-[11:21:59] [main/INFO] - Local variable: 2 has name message in method onMessage
-[11:21:59] [main/INFO] - Renamed local variable: 2 to ඞඞඞඞඞඝඞඞඞඞඞ
-[11:21:59] [main/INFO] - Local variable: 3 has name gson in method onMessage
-[11:21:59] [main/INFO] - Renamed local variable: 3 to ඞඝඞඞඞඞ
-[11:21:59] [main/INFO] - Local variable: 4 has name msg in method onMessage
-[11:21:59] [main/INFO] - Renamed local variable: 4 to ඞඞඝඞඞඞඝඝඝඞඝඞ
-[11:21:59] [main/INFO] - Local variable: 5 has name big in method onMessage
-[11:21:59] [main/INFO] - Renamed local variable: 5 to ඞඞඞඞඞඞඞඞඝඝඝ
-[11:21:59] [main/INFO] - Found method: onError
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method onError
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඝඞඞඞඝඝඞඞඞ
-[11:21:59] [main/INFO] - Local variable: 1 has name conn in method onError
-[11:21:59] [main/INFO] - Renamed local variable: 1 to ඞඞඞඞඞඝඞඞඞඞ
-[11:21:59] [main/INFO] - Local variable: 2 has name ex in method onError
-[11:21:59] [main/INFO] - Renamed local variable: 2 to ඝඞඞඞඞඞඞඞඞඝඞ
-[11:21:59] [main/INFO] - Found method: onStart
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method onStart
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඝඞඞඞඞඝඝඞඞඞඞ
-[11:21:59] [main/INFO] - Transforming class: test
-[11:21:59] [main/INFO] - Found method: <init>
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method <init>
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඝඝඝඝඝඞඞ
-[11:21:59] [main/INFO] - Found method: main
-[11:21:59] [main/INFO] - Local variable: 0 has name args in method main
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඝඞඞඞඞඞඞඝඞඞඞ
-[11:21:59] [main/INFO] - Local variable: 1 has name gson in method main
-[11:21:59] [main/INFO] - Renamed local variable: 1 to ඞඝඞඞඞඞඞඞඞඞඞඞඞ
-[11:21:59] [main/INFO] - Local variable: 2 has name str in method main
-[11:21:59] [main/INFO] - Renamed local variable: 2 to ඞඞඞඞඞඞඝඞඞඞඝ
-[11:21:59] [main/INFO] - Local variable: 3 has name str2 in method main
-[11:21:59] [main/INFO] - Renamed local variable: 3 to ඞඞඞඝඞඞ
-[11:21:59] [main/INFO] - Local variable: 4 has name str3 in method main
-[11:21:59] [main/INFO] - Renamed local variable: 4 to ඞඞඞඞඞඞඞඞඞ
-[11:21:59] [main/INFO] - Transforming class: test$ObjectThing
-[11:21:59] [main/INFO] - Found method: <init>
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method <init>
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඞඞඞඞඞඞ
-[11:21:59] [main/INFO] - Local variable: 1 has name author in method <init>
-[11:21:59] [main/INFO] - Renamed local variable: 1 to ඞඝඞඞඞඝඞඞඞඝඞඞඞ
-[11:21:59] [main/INFO] - Local variable: 2 has name message in method <init>
-[11:21:59] [main/INFO] - Renamed local variable: 2 to ඞඞඞඞඝඞඝඞඞඝඞඞඞඞඝ
-[11:21:59] [main/INFO] - Found method: getAuthor
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method getAuthor
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඞඞඞඞඞඞඞඝඝඞඞඞ
-[11:21:59] [main/INFO] - Found method: setAuthor
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method setAuthor
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඞඝඝඞඞඝඝඞඞඞඞ
-[11:21:59] [main/INFO] - Local variable: 1 has name author in method setAuthor
-[11:21:59] [main/INFO] - Renamed local variable: 1 to ඞඞඞඞඞඝඞඞඞඞඞඞඞඞඝ
-[11:21:59] [main/INFO] - Found method: getMessage
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method getMessage
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඝඞඞඞඞඞඞඞඝඞ
-[11:21:59] [main/INFO] - Found method: setMessage
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method setMessage
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඞඞඞඝඞ
-[11:21:59] [main/INFO] - Local variable: 1 has name message in method setMessage
-[11:21:59] [main/INFO] - Renamed local variable: 1 to ඝඞඞඞඞඞඞඞඞඞඞඞඞඞඞ
-[11:21:59] [main/INFO] - Found method: toString
-[11:21:59] [main/INFO] - Local variable: 0 has name this in method toString
-[11:21:59] [main/INFO] - Renamed local variable: 0 to ඝඞඞඞඞඝඞ
-[11:21:59] [main/INFO] - Transforming class: module-info
-[11:21:59] [main/INFO] - Saving output file: test/Aped-irc.jar
-[11:22:08] [main/INFO] - Saved output file: test/Aped-irc.jar
+[19:42:13] [main/INFO] - Transforming classes
+[19:42:13] [main/INFO] - Transforming class: Author
+[19:42:13] [main/INFO] - Found method: <init>
+[19:42:13] [main/INFO] - Found method: getName
+[19:42:13] [main/INFO] - Found method: getUid
+[19:42:13] [main/INFO] - Found method: component1
+[19:42:13] [main/INFO] - Found method: component2
+[19:42:13] [main/INFO] - Found method: copy
+[19:42:13] [main/INFO] - Found method: copy$default
+[19:42:13] [main/INFO] - Found method: toString
+[19:42:13] [main/INFO] - Found method: hashCode
+[19:42:13] [main/INFO] - Found method: equals
+[19:42:13] [main/INFO] - Transforming class: Main
+[19:42:13] [main/INFO] - Renamed class: Main to 難難難難難難難難難手手
+[19:42:13] [main/INFO] - Found method: <init>
+[19:42:13] [main/INFO] - Found method: main
+[19:42:13] [main/INFO] - Found method: base64Encode
+[19:42:13] [main/INFO] - Found method: base64Decode
+[19:42:13] [main/INFO] - Found method: base64Encode
+[19:42:13] [main/INFO] - Found method: base64Decode
+[19:42:13] [main/INFO] - Transforming class: Message
+[19:42:13] [main/INFO] - Found method: <init>
+[19:42:13] [main/INFO] - Found method: getMessage
+[19:42:13] [main/INFO] - Found method: getAuthor
+[19:42:13] [main/INFO] - Found method: component1
+[19:42:13] [main/INFO] - Found method: component2
+[19:42:13] [main/INFO] - Found method: copy
+[19:42:13] [main/INFO] - Found method: copy$default
+[19:42:13] [main/INFO] - Found method: toString
+[19:42:13] [main/INFO] - Found method: hashCode
+[19:42:13] [main/INFO] - Found method: equals
+[19:42:13] [main/INFO] - Transforming class: ChatServer
+[19:42:13] [main/INFO] - Found method: <init>
+[19:42:13] [main/INFO] - Found method: onOpen
+[19:42:13] [main/INFO] - Found method: onClose
+[19:42:13] [main/INFO] - Found method: onMessage
+[19:42:13] [main/INFO] - Found method: onError
+[19:42:13] [main/INFO] - Found method: onStart
+[19:42:13] [main/INFO] - Transforming class: test
+[19:42:13] [main/INFO] - Renamed class: test to 難難難難難難難手難手難
+[19:42:13] [main/INFO] - Found method: <init>
+[19:42:13] [main/INFO] - Found method: main
+[19:42:13] [main/INFO] - Transforming class: test$ObjectThing
+[19:42:13] [main/INFO] - Found method: <init>
+[19:42:13] [main/INFO] - Found method: getAuthor
+[19:42:13] [main/INFO] - Found method: setAuthor
+[19:42:13] [main/INFO] - Found method: getMessage
+[19:42:13] [main/INFO] - Found method: setMessage
+[19:42:13] [main/INFO] - Found method: toString
+[19:42:13] [main/INFO] - Transforming class: module-info
+[19:42:13] [main/INFO] - Finished renaming. Fixing methods.
+[19:42:13] [main/INFO] - Fixing methods for class: Author
+[19:42:13] [main/INFO] - Fixing methods for class: 難難難難難難難難難手手
+[19:42:13] [main/INFO] - Fixing methods for class: Message
+[19:42:13] [main/INFO] - Fixing methods for class: ChatServer
+[19:42:13] [main/INFO] - Found method call for obfuscated class with unobfuscated name: Main
+[19:42:13] [main/INFO] - Renaming method call to: 難難難難難難難難難手手
+[19:42:13] [main/INFO] - Found method call for obfuscated class with unobfuscated name: Main
+[19:42:13] [main/INFO] - Renaming method call to: 難難難難難難難難難手手
+[19:42:13] [main/INFO] - Fixing methods for class: 難難難難難難難手難手難
+[19:42:13] [main/INFO] - Found method call for obfuscated class with unobfuscated name: Main
+[19:42:13] [main/INFO] - Renaming method call to: 難難難難難難難難難手手
+[19:42:13] [main/INFO] - Found method call for obfuscated class with unobfuscated name: Main
+[19:42:13] [main/INFO] - Renaming method call to: 難難難難難難難難難手手
+[19:42:13] [main/INFO] - Fixing methods for class: test$ObjectThing
+[19:42:13] [main/INFO] - Fixing methods for class: module-info
+[19:42:13] [main/INFO] - Saving output file: test/Aped-irc.jar
+[19:42:17] [main/INFO] - Saved output file: test/Aped-irc.jar
 

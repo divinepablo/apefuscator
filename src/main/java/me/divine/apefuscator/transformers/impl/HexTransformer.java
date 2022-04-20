@@ -7,7 +7,7 @@ import org.objectweb.asm.Opcodes;
 
 public class HexTransformer extends Transformer {
     public HexTransformer() {
-        super("HexTransformer", "Converts all numbers to hexadecimal");
+        super("Hex", "Converts all numbers to hexadecimal");
     }
 
 

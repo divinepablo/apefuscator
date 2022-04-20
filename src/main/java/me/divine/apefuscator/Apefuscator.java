@@ -27,7 +27,8 @@ public class Apefuscator {
     private final Path input;
     private final Path output;
     private final ArrayList<Transformer> transformers = new ArrayList<>();
-    private final ArrayList<String> ignored = new ArrayList<>();
+    private final ArrayList<String> ignoredStrings = new ArrayList<>();
+    private final ArrayList<ClassNode> ignoredList = new ArrayList<>();
 
     private Apefuscator(ApefuscatorBuilder builder) throws FileNotFoundException {
         if (!builder.input.toFile().exists())
@@ -39,7 +40,7 @@ public class Apefuscator {
         this.input = builder.input;
         this.output = builder.output;
         this.transformers.addAll(builder.transformers);
-        this.ignored.addAll(builder.ignored);
+        this.ignoredStrings.addAll(builder.ignored);
 
         System.out.println();
     }
@@ -58,6 +59,12 @@ public class Apefuscator {
 
                     classes.put(classNode.name, classNode);
                     originalClasses.put(classNode.name, ClassUtil.copy(classNode)); //yes
+                    for (String ignoredString : ignoredStrings) {
+                        if (classNode.name.startsWith(ignoredString) || classNode.equals(ignoredString)) {
+                            ignoredList.add(classNode);
+                        }
+                    }
+
                 } else {
                     files.put(name, data);
                 }
@@ -142,21 +149,20 @@ public class Apefuscator {
         }
     }
 
-    public Collection<ClassNode> classes() {
-        Collection<ClassNode> classes = new ArrayList<>();
-        for (ClassNode classNode : this.classes.values()) {
-            if (!ignored.contains(classNode.name)) {
-                classes.add(classNode);
-            }
-        }
+    private Collection<ClassNode> classes() {
+        return getClasses();
+    }
 
-
+    public Collection<ClassNode> getClasses() {
+        Collection<ClassNode> classes = new ArrayList<>(this.classes.values());
+        classes.removeIf(ignoredList::contains);
         return classes;
     }
 
-    public Map<String, ClassNode> getClasses() {
-        return classes;
+    public ClassNode getClass(String name) {
+        return classes.values().stream().filter(classNode -> classNode.name.equals(name)).findFirst().orElse(null);
     }
+
 
     public Map<String, ClassNode> getOriginalClasses() {
         return originalClasses;
