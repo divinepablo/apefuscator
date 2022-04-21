@@ -11,7 +11,7 @@ public class Main {
                 .output(Path.of("test", "Aped-irc.jar"))
 //                .addTransformer(new MathTransformer())
                 .ignored("com", "kotlin", "org")
-                .addTransformer(new NameTransformer('難', '手'))
+                .addTransformer(new NameTransformer('難', '手', NameTransformer.LOCALVARIABLES + NameTransformer.FIELDS + NameTransformer.METHODS, true))
                 .build()
                 .start();  // start the apefuscator
 

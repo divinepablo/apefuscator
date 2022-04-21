@@ -1,0 +1,277 @@
+{
+  "localVariables": [
+    {
+      "before": "msg",
+      "after": "難難難難難難手難"
+    },
+    {
+      "before": "handshake",
+      "after": "手難難手難難難難難難手難難難難手難難"
+    },
+    {
+      "before": "reason",
+      "after": "難手手難手手難手難難難手難手"
+    },
+    {
+      "before": "big",
+      "after": "難難手難手難難難難難"
+    },
+    {
+      "before": "other",
+      "after": "難難手手難難難難"
+    },
+    {
+      "before": "conn",
+      "after": "難手難難難手手難難手難"
+    },
+    {
+      "before": "code",
+      "after": "手難難難難難難難手難難難難"
+    },
+    {
+      "before": "reader",
+      "after": "手難難難難難難難難難難難難難"
+    },
+    {
+      "before": "remote",
+      "after": "手手難難手手難難手難難難難手"
+    },
+    {
+      "before": "result",
+      "after": "難難難難難難難"
+    },
+    {
+      "before": "uid",
+      "after": "手難難難難難"
+    },
+    {
+      "before": "file",
+      "after": "難手難難難難手難難難難難手"
+    },
+    {
+      "before": "str3",
+      "after": "手難手難難難手難難難難難難"
+    },
+    {
+      "before": "str2",
+      "after": "難難難難難手手手難難難難"
+    },
+    {
+      "before": "e",
+      "after": "手難難難難難手難難難"
+    },
+    {
+      "before": "author",
+      "after": "難難難難難難難難難手"
+    },
+    {
+      "before": "this",
+      "after": "難難難難手難難難難"
+    },
+    {
+      "before": "message",
+      "after": "難難難手難難難難難"
+    },
+    {
+      "before": "args",
+      "after": "難手難難難難難難手難難"
+    },
+    {
+      "before": "str",
+      "after": "難難難難難難"
+    },
+    {
+      "before": "input",
+      "after": "難難難難難難手難難難難"
+    },
+    {
+      "before": "s",
+      "after": "難難難難手手難"
+    },
+    {
+      "before": "ex",
+      "after": "手難難手難難手難"
+    },
+    {
+      "before": "port",
+      "after": "難難難手手難難難難難難難難"
+    },
+    {
+      "before": "obj",
+      "after": "難手手難難難難難難"
+    },
+    {
+      "before": "name",
+      "after": "難難難難難難難難難難手"
+    },
+    {
+      "before": "parsed",
+      "after": "手難難難難難難難難難難難難手難"
+    },
+    {
+      "before": "writer",
+      "after": "難難難難難手難難"
+    },
+    {
+      "before": "gson",
+      "after": "難難難難難"
+    }
+  ],
+  "fields": [
+    {
+      "before": "uid",
+      "after": "難難手難"
+    },
+    {
+      "before": "author",
+      "after": "手難難難難手難難難難"
+    },
+    {
+      "before": "message",
+      "after": "難難難手手難難難手手難"
+    },
+    {
+      "before": "author",
+      "after": "難難手手手手手難難難難"
+    },
+    {
+      "before": "name",
+      "after": "難手手手難難難難"
+    },
+    {
+      "before": "message",
+      "after": "難難手難手難難難難難難難難難"
+    }
+  ],
+  "methods": [
+    {
+      "before": "onMessage",
+      "after": "org/java_websocket/server/WebSocketServer"
+    },
+    {
+      "before": "base64Encode",
+      "after": "難難難難難難難難手手難難難難難難難難手"
+    },
+    {
+      "before": "getAuthor",
+      "after": "手難難難難難難難難手手手難難手手難手"
+    },
+    {
+      "before": "getMessage",
+      "after": "難難難手難手難難難難難難難難難難難難"
+    },
+    {
+      "before": "toString",
+      "after": "難手難難難難難難難難手難難"
+    },
+    {
+      "before": "base64Decode",
+      "after": "難手難難難難手難手難難難手難難難難難"
+    },
+    {
+      "before": "setAuthor",
+      "after": "難難難難難難難難難手難難難手難難手"
+    },
+    {
+      "before": "component1",
+      "after": "手難難難難難難難難難手難手難難難手"
+    },
+    {
+      "before": "getMessage",
+      "after": "難手難難難難難難難手難難難難難難難難手"
+    },
+    {
+      "before": "copy$default",
+      "after": "手難難難難手難難難難難手難難難手"
+    },
+    {
+      "before": "hashCode",
+      "after": "難難難難手難難難手難難手難難難"
+    },
+    {
+      "before": "equals",
+      "after": "難難難手難手難難難手難"
+    },
+    {
+      "before": "copy$default",
+      "after": "難難手難手難手難難難手難難難難難難難"
+    },
+    {
+      "before": "toString",
+      "after": "難難難難難難難手難難手難手難難難"
+    },
+    {
+      "before": "getAuthor",
+      "after": "難手難難難難難難難難難"
+    },
+    {
+      "before": "component2",
+      "after": "難手難難難難手難難難難難手難難難難"
+    },
+    {
+      "before": "base64Decode",
+      "after": "難手難手難難手難難難難難手"
+    },
+    {
+      "before": "hashCode",
+      "after": "難難難難難難難手難難難難難手"
+    },
+    {
+      "before": "component2",
+      "after": "難難難難難難手難難難難難難難難難難難難"
+    },
+    {
+      "before": "getName",
+      "after": "難難手難難手難手手難難手手難"
+    },
+    {
+      "before": "onStart",
+      "after": "org/java_websocket/server/WebSocketServer"
+    },
+    {
+      "before": "onOpen",
+      "after": "org/java_websocket/server/WebSocketServer"
+    },
+    {
+      "before": "setMessage",
+      "after": "難難難難難難難手難難難難"
+    },
+    {
+      "before": "equals",
+      "after": "難難手難手難難手手難難難難手"
+    },
+    {
+      "before": "onClose",
+      "after": "org/java_websocket/server/WebSocketServer"
+    },
+    {
+      "before": "copy",
+      "after": "難手手難難難難"
+    },
+    {
+      "before": "getUid",
+      "after": "難難手難難難手"
+    },
+    {
+      "before": "copy",
+      "after": "難難難難難難難難難難"
+    },
+    {
+      "before": "toString",
+      "after": "難手手難難難難難難難手難難難難難難"
+    },
+    {
+      "before": "base64Encode",
+      "after": "難手難手難難難手手難手難難難難難"
+    },
+    {
+      "before": "onError",
+      "after": "org/java_websocket/server/WebSocketServer"
+    },
+    {
+      "before": "component1",
+      "after": "手難難難難難手手難難難難難難"
+    }
+  ],
+  "classes": []
+}
