@@ -78,6 +78,26 @@ public class ASMUtils implements Opcodes {
         return (Type) ((LdcInsnNode) node).cst;
     }
 
+    public static Type getType(String desc) {
+        return Type.getType(desc);
+    }
+
+    public static Type getReturnType(String desc) {
+        return Type.getReturnType(desc);
+    }
+
+    public static Type[] getArgumentTypes(String desc) {
+        return Type.getArgumentTypes(desc);
+    }
+
+    public static Type[] getArgumentTypes(MethodNode method) {
+        return Type.getArgumentTypes(method.desc);
+    }
+
+    public static int getArgumentSize(String desc) {
+        return getArgumentTypes(desc).length;
+    }
+
     public static int getInteger(AbstractInsnNode node) {
         int opcode = node.getOpcode();
 
@@ -130,6 +150,13 @@ public class ASMUtils implements Opcodes {
         }
 
         throw new IllegalArgumentException();
+    }
+
+    public static boolean isStatic(MethodNode method) {
+        return isStatic(method.access);
+    }
+    public static boolean isStatic(int access) {
+        return (access & Opcodes.ACC_STATIC) != 0;
     }
 
     public static Number getNumber(AbstractInsnNode node) {

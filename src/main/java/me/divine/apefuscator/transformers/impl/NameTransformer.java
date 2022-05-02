@@ -15,8 +15,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
-
+// TODO: Make this a lot cleaner
 public class NameTransformer extends me.divine.apefuscator.transformers.Transformer implements Opcodes {
     private final Logger LOGGER = LogManager.getLogger(NameTransformer.class);
     private Map<ClassNode, String[]> classMap = new HashMap<>();
@@ -84,7 +85,6 @@ public class NameTransformer extends me.divine.apefuscator.transformers.Transfor
     @Override
     public void transform(Apefuscator obfuscator) {
         obfuscator.getClasses().forEach(classNode -> {
-            LOGGER.info("Transforming class: {}", classNode.name);
             ClassNode superClass = getSuperClass(obfuscator, classNode);
 
             if (!isMain(classNode) && isClasses()) {
@@ -92,39 +92,35 @@ public class NameTransformer extends me.divine.apefuscator.transformers.Transfor
                 renameClass(classNode, newName);
             }
             classNode.methods.forEach(methodNode -> {
-                LOGGER.info("Found method: {}", methodNode.name);
-                if (methodNode.localVariables != null && isLocalVariables()) {
-                    methodNode.localVariables.forEach(localVariableNode -> {
-                        if (localVariableNode.name != null) {
-
+                if (isLocalVariables())
+                    if (methodNode.localVariables != null) {
+                        methodNode.localVariables.forEach(localVariableNode -> {
                             String newName = getName(localVariableNode.name.length() + ThreadLocalRandom.current().nextInt(1, 10));
-
-                            localVariableMap.put(localVariableNode.name, newName);
-                            localVariableNode.name = newName;
-
-                        }
-                    });
-                }
+                            renameLocalVariable(localVariableNode, newName);
+                        });
+                    }
 
                 if (isMethods()) {
                     if (methodNode.name.equals("<init>") || methodNode.name.equals("<clinit>") || methodNode.name.equals("main")) {
                         return;
                     }
-
-                    if (superClass != null && superClass.methods.stream().anyMatch(superMethodNode -> superMethodNode.name.equals(methodNode.name))) {
-                        String newName = superClass.name;
+                    if (isMethodFromSuperclass(superClass, methodNode)) {
+                        for (MethodNode superMethodNode : superClass.methods) {
+                            if (superMethodNode.name.equals(methodNode.name)) {
+                                String newName = superMethodNode.name;
+                                renameMethod(methodNode, newName);
+                                return;
+                            }
+                        }
+                    } else {
+                        String newName = getName(methodNode.name.length() + ThreadLocalRandom.current().nextInt(1, 10));
                         renameMethod(methodNode, newName);
-                        return;
                     }
-
-                    String newName = getName(methodNode.name.length() + ThreadLocalRandom.current().nextInt(1, 10));
-                    renameMethod(methodNode, newName);
                 }
 
             });
             if (isFields()) {
                 classNode.fields.forEach(fieldNode -> {
-                    LOGGER.info("Renaming field: {}", fieldNode.name);
                     String newName = getName(fieldNode.name.length() + ThreadLocalRandom.current().nextInt(1, 10));
                     renameField(fieldNode, newName);
                 });
@@ -136,9 +132,21 @@ public class NameTransformer extends me.divine.apefuscator.transformers.Transfor
         }
 
 //        LOGGER.info("Finished renaming. Fixing methods and fields.");
-        LOGGER.info("Fixing methods.");
-        obfuscator.getClasses().forEach(this::fixMethods);
-//        obfuscator.getClasses().forEach(classNode -> fixFields(obfuscator, classNode));
+        if (isClasses()) {
+            LOGGER.info("Fixing methods.");
+            obfuscator.getClasses().forEach(this::fixMethods);
+            LOGGER.info("Fixing fields.");
+            obfuscator.getClasses().forEach(classNode -> fixFields(obfuscator, classNode));
+        }
+    }
+
+    private void renameLocalVariable(LocalVariableNode localVariableNode, String newName) {
+        localVariableMap.put(localVariableNode.name, newName);
+        localVariableNode.name = newName;
+    }
+
+    private boolean isMethodFromSuperclass(ClassNode superClass, MethodNode methodNode) {
+        return superClass != null && superClass.methods.stream().anyMatch(superMethodNode -> superMethodNode.name.equals(methodNode.name));
     }
 
     private void saveMappings() {
@@ -225,7 +233,7 @@ public class NameTransformer extends me.divine.apefuscator.transformers.Transfor
     }
 
     private boolean isClasses() {
-        return types == CLASSES || types == LOCALVARIABLES + CLASSES || types == METHODS + CLASSES || types == LOCALVARIABLES + METHODS + CLASSES;
+        return types == CLASSES || types == LOCALVARIABLES + CLASSES || types == METHODS + CLASSES || types == LOCALVARIABLES + METHODS + CLASSES || types == ALL;
     }
 
     private boolean isLocalVariables() {
@@ -241,20 +249,19 @@ public class NameTransformer extends me.divine.apefuscator.transformers.Transfor
     }
 
     private void fixMethods(ClassNode classNode) {
-        LOGGER.info("Fixing methods for class: {}", classNode.name);
         classNode.methods.forEach(methodNode -> {
 
             methodNode.instructions.forEach(instruction -> {
                 if (instruction instanceof FieldInsnNode) {
                     FieldInsnNode fieldInsnNode = (FieldInsnNode) instruction;
-
+                    String descClass = fieldInsnNode.desc.replaceFirst("L", "").replaceFirst(";", "");
                     classMap.values().forEach(mapping -> {
                         if (mapping.length == 2) {
-                            if (mapping[0].equals(fieldInsnNode.owner)) {
-                                LOGGER.info("Found field owner for obfuscated class with unobfuscated name: {}", fieldInsnNode.owner);
+                            if (mapping[0].equals(descClass)) {
+                                LOGGER.info("Found field owner for obfuscated class with unobfuscated name: {}", descClass);
                                 String newName = mapping[1];
-                                LOGGER.info("Renaming field owner to: {}", newName);
-                                fieldInsnNode.owner = newName;
+//                        LOGGER.info("Renaming field owner to: {}", newName);
+                                fieldInsnNode.desc = "L" + newName + ";";
                             }
                         }
                     });
@@ -277,9 +284,18 @@ public class NameTransformer extends me.divine.apefuscator.transformers.Transfor
     }
 
     private void fixFields(Apefuscator obfuscator, ClassNode classNode) {
-        LOGGER.info("Fixing fields for class: {}", classNode.name);
         classNode.fields.forEach(fieldNode -> {
-            LOGGER.info("Found field {} with descriptor {} and attributes {}", fieldNode.name, fieldNode.desc, fieldNode.attrs);
+            String descClass = fieldNode.desc.replaceFirst("L", "").replaceFirst(";", "");
+            classMap.values().forEach(mapping -> {
+                if (mapping.length == 2) {
+                    if (mapping[0].equals(descClass)) {
+                        LOGGER.info("Found field owner for obfuscated class with unobfuscated name: {}", descClass);
+                        String newName = mapping[1];
+//                        LOGGER.info("Renaming field owner to: {}", newName);
+                        fieldNode.desc = "L" + newName + ";";
+                    }
+                }
+            });
         });
     }
 

@@ -1,75 +1,11 @@
-[20:40:09] [main/INFO] - Ignoring 3 classes
-[20:40:09] [main/INFO] - Adding transformer: Name
-[20:40:09] [main/WARN] - Output file already exist, data will be overwritten
-[20:40:09] [main/INFO] - Starting Apefuscator
-[20:40:09] [main/INFO] - Loading input file: test/irc.jar
-[20:40:14] [main/INFO] - Loaded input file: test/irc.jar
+[11:02:52] [main/INFO] - Ignoring 3 classes
+[11:02:52] [main/INFO] - Adding transformer: String Encryption
+[11:02:52] [main/WARN] - Output file already exist, data will be overwritten
+[11:02:52] [main/INFO] - Starting Apefuscator
+[11:02:52] [main/INFO] - Loading input file: test/irc.jar
+[11:02:58] [main/INFO] - Loaded input file: test/irc.jar
 
-[20:40:14] [main/INFO] - Transforming classes
-[20:40:14] [main/INFO] - Transforming class: Author
-[20:40:14] [main/INFO] - Found method: <init>
-[20:40:14] [main/INFO] - Found method: getName
-[20:40:14] [main/INFO] - Found method: getUid
-[20:40:14] [main/INFO] - Found method: component1
-[20:40:14] [main/INFO] - Found method: component2
-[20:40:14] [main/INFO] - Found method: copy
-[20:40:14] [main/INFO] - Found method: copy$default
-[20:40:14] [main/INFO] - Found method: toString
-[20:40:14] [main/INFO] - Found method: hashCode
-[20:40:14] [main/INFO] - Found method: equals
-[20:40:14] [main/INFO] - Renaming field: name
-[20:40:14] [main/INFO] - Renaming field: uid
-[20:40:14] [main/INFO] - Transforming class: Main
-[20:40:14] [main/INFO] - Found method: <init>
-[20:40:14] [main/INFO] - Found method: main
-[20:40:14] [main/INFO] - Found method: base64Encode
-[20:40:14] [main/INFO] - Found method: base64Decode
-[20:40:14] [main/INFO] - Found method: base64Encode
-[20:40:14] [main/INFO] - Found method: base64Decode
-[20:40:14] [main/INFO] - Transforming class: Message
-[20:40:14] [main/INFO] - Found method: <init>
-[20:40:14] [main/INFO] - Found method: getMessage
-[20:40:14] [main/INFO] - Found method: getAuthor
-[20:40:14] [main/INFO] - Found method: component1
-[20:40:14] [main/INFO] - Found method: component2
-[20:40:14] [main/INFO] - Found method: copy
-[20:40:14] [main/INFO] - Found method: copy$default
-[20:40:14] [main/INFO] - Found method: toString
-[20:40:14] [main/INFO] - Found method: hashCode
-[20:40:14] [main/INFO] - Found method: equals
-[20:40:14] [main/INFO] - Renaming field: message
-[20:40:14] [main/INFO] - Renaming field: author
-[20:40:14] [main/INFO] - Transforming class: ChatServer
-[20:40:14] [main/INFO] - Found method: <init>
-[20:40:14] [main/INFO] - Found method: onOpen
-[20:40:14] [main/INFO] - Found method: onClose
-[20:40:14] [main/INFO] - Found method: onMessage
-[20:40:14] [main/INFO] - Found method: onError
-[20:40:14] [main/INFO] - Found method: onStart
-[20:40:14] [main/INFO] - Transforming class: test
-[20:40:14] [main/INFO] - Found method: <init>
-[20:40:14] [main/INFO] - Found method: main
-[20:40:14] [main/INFO] - Transforming class: test$ObjectThing
-[20:40:14] [main/INFO] - Found method: <init>
-[20:40:14] [main/INFO] - Found method: getAuthor
-[20:40:14] [main/INFO] - Found method: setAuthor
-[20:40:14] [main/INFO] - Found method: getMessage
-[20:40:14] [main/INFO] - Found method: setMessage
-[20:40:14] [main/INFO] - Found method: toString
-[20:40:14] [main/INFO] - Renaming field: author
-[20:40:14] [main/INFO] - Renaming field: message
-[20:40:14] [main/INFO] - Transforming class: module-info
-[20:40:14] [main/INFO] - Renaming done
-[20:40:14] [main/INFO] - Saving mappings to file
-[20:40:14] [main/INFO] - Finished saving the mapping
-[20:40:14] [main/INFO] - Fixing methods.
-[20:40:14] [main/INFO] - Fixing methods for class: Author
-[20:40:14] [main/INFO] - Fixing methods for class: Main
-[20:40:14] [main/INFO] - Fixing methods for class: Message
-[20:40:14] [main/INFO] - Fixing methods for class: ChatServer
-[20:40:14] [main/INFO] - Fixing methods for class: test
-[20:40:14] [main/INFO] - Fixing methods for class: test$ObjectThing
-[20:40:14] [main/INFO] - Fixing methods for class: module-info
-[20:40:14] [main/INFO] - Saving output file: test/Aped-irc.jar
-[20:40:18] [main/INFO] - Saved output file: test/Aped-irc.jar
+[11:02:58] [main/INFO] - Transforming classes
+[11:03:00] [main/INFO] - Saving output file: test/Aped-HelloWorld.jar
+[11:03:05] [main/INFO] - Saved output file: test/Aped-HelloWorld.jar
 
