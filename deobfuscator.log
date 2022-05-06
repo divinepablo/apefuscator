@@ -1,11 +1,19 @@
-[11:02:52] [main/INFO] - Ignoring 3 classes
-[11:02:52] [main/INFO] - Adding transformer: String Encryption
-[11:02:52] [main/WARN] - Output file already exist, data will be overwritten
-[11:02:52] [main/INFO] - Starting Apefuscator
-[11:02:52] [main/INFO] - Loading input file: test/irc.jar
-[11:02:58] [main/INFO] - Loaded input file: test/irc.jar
+[12:16:15] [main/INFO] - Ignoring 3 classes
+[12:16:15] [main/INFO] - Adding transformer: InvokeDynamic
+[12:16:15] [main/WARN] - Output file already exist, data will be overwritten
+[12:16:15] [main/INFO] - Starting Apefuscator
+[12:16:15] [main/INFO] - Loading input file: test/input/elloWorld.jar
+[12:16:15] [main/INFO] - Loaded input file: test/input/elloWorld.jar
 
-[11:02:58] [main/INFO] - Transforming classes
-[11:03:00] [main/INFO] - Saving output file: test/Aped-HelloWorld.jar
-[11:03:05] [main/INFO] - Saved output file: test/Aped-HelloWorld.jar
+[12:16:15] [main/INFO] - Transforming classes
+[12:16:15] [main/INFO] - Found invoke dynamic instruction makeConcatWithConstants in method main
+[12:16:15] [main/INFO] - Invoke dynamic method name: makeConcatWithConstants
+[12:16:15] [main/INFO] - Invoke dynamic method desc: (I)Ljava/lang/String;
+[12:16:15] [main/INFO] - Invoke dynamic bootstrap method: java/lang/invoke/StringConcatFactory.makeConcatWithConstants(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite; (6)
+[12:16:15] [main/INFO] - Invoke dynamic bootstrap method args: Number -
+[12:16:15] [main/INFO] - Invoke dynamic bootstrap method handle owner: java/lang/invoke/StringConcatFactory
+[12:16:15] [main/INFO] - Invoke dynamic bootstrap method handle name: makeConcatWithConstants
+[12:16:15] [main/INFO] - Invoke dynamic bootstrap method handle desc: (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+[12:16:15] [main/INFO] - Saving output file: test/Aped-HelloWorld.jar
+[12:16:15] [main/INFO] - Saved output file: test/Aped-HelloWorld.jar
 

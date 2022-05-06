@@ -18,12 +18,7 @@ public class TestTransformer extends me.divine.apefuscator.transformers.Transfor
     public void transform(Apefuscator obfuscator) {
         obfuscator.getClasses().forEach(classNode -> {
             classNode.methods.forEach(methodNode -> {
-                methodNode.instructions.forEach(instruction -> {
-                    if (instruction instanceof VarInsnNode) {
-                        VarInsnNode varInsnNode = (VarInsnNode) instruction;
-                        LOGGER.info("Method {} VarInsnNode: {} {}", methodNode.name, varInsnNode.getOpcode(), varInsnNode.var);
-                    }
-                });
+                LOGGER.info("Found method: {} {}", methodNode.name, methodNode.desc);
             });
         });
     }

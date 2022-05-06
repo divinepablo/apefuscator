@@ -3,8 +3,8 @@ package me.divine.apefuscator.transformers.impl;
 import me.divine.apefuscator.Apefuscator;
 import me.divine.apefuscator.transformers.Transformer;
 import me.divine.apefuscator.utils.ASMUtils;
-import org.objectweb.asm.Label;
 import org.objectweb.asm.Opcodes;
+import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.*;
 
 import javax.crypto.*;
@@ -55,7 +55,7 @@ public class StringEncryptionTransformer extends Transformer {
                         }
                     });
                 });
-                MethodNode methodNode = new MethodNode(Opcodes.ACC_PRIVATE, "decrypt", "(Ljava/lang/String; 0, Ljavax/crypto/SecretKey; 1, Ljavax/crypto/spec/IvParameterSpec; 2)Ljava/lang/String;", null, null);
+                MethodNode methodNode = new MethodNode(Opcodes.ACC_PRIVATE, "decrypt", ASMUtils.makeDescriptor(Type.getType(String.class), Type.getType(String.class), Type.getType(String.class), Type.getType(String.class)), null, null);
                 InsnList decryptInstructions = new InsnList();
 
                 LabelNode a = new LabelNode();

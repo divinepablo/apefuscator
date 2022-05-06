@@ -14,19 +14,19 @@ public class Main {
     public static void main(String[] args) {
         int yes = 0;
         int no = 0;
-        while (true) {
-            yes++;
-            no *= yes >> 1;
-            print("Number +%s", yes);
-            System.out.println("Number -" + no);
-            if (yes == 1000000) {
-                break;
-            }
-            try {
-                System.out.println("Throw exception");
-                throw new Exception("Exception");
-            } catch (Exception e) {
-                e.printStackTrace();
+        abc: while (true) {
+            def: {
+                yes++;
+                no *= yes >> 1;
+                if (no % 60 == 0) {
+                    break def;
+                }
+                print("Number +%s", yes);
+                System.out.println("Number -" + no);
+                if (yes == 1000000) {
+                    break abc;
+                }
+
             }
         }
     }

@@ -6,7 +6,6 @@ package me.divine.apefuscator.utils;
 
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.MethodVisitor;
-import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.*;
 import org.objectweb.asm.tree.analysis.Analyzer;
@@ -378,5 +377,14 @@ public class ASMUtils implements Opcodes {
         methodNode.accept(copyMethod);
 
         return copyMethod;
+    }
+
+    // make method descriptor generator
+    public static String makeDescriptor(String returnType, String... args) {
+        return Type.getMethodDescriptor(Type.getType(returnType), Arrays.stream(args).map(Type::getType).toArray(Type[]::new));
+    }
+
+    public static String makeDescriptor(Type returnType, Type... args) {
+        return Type.getMethodDescriptor(returnType, args);
     }
 }
