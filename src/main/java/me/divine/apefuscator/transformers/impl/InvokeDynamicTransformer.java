@@ -17,7 +17,7 @@ public class InvokeDynamicTransformer extends me.divine.apefuscator.transformers
     @Override
     public void transform(Apefuscator obfuscator) {
         ArrayList<InvokeDynamicInsnNode> test = new ArrayList<>();
-        obfuscator.classes().forEach(classNode -> {
+        obfuscator.getClassesOriginal().forEach(classNode -> {
             classNode.methods.forEach(methodNode -> {
                 methodNode.instructions.forEach(instruction -> {
                     if (instruction instanceof InvokeDynamicInsnNode) {

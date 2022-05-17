@@ -159,6 +159,10 @@ public class Apefuscator {
         return classes;
     }
 
+    public Collection<ClassNode> getClassesOriginal() {
+        return classes.values();
+    }
+
     public ClassNode getClass(String name) {
         return classes.values().stream().filter(classNode -> classNode.name.equals(name)).findFirst().orElse(null);
     }

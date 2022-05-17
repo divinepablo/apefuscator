@@ -17,7 +17,7 @@ public class MathTransformer extends Transformer {
 
     @Override
     public void transform(Apefuscator var1) {
-        var1.classes().forEach(clazz -> {
+        var1.getClassesOriginal().forEach(clazz -> {
             clazz.methods.forEach(method -> {
                 method.instructions.forEach(instruction -> {
                     if (instruction instanceof IntInsnNode) {

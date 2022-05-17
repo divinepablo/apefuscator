@@ -38,7 +38,7 @@ public class StringEncryptionTransformer extends Transformer {
             SecretKey key = getKeyFromPassword(pass, "asdfNiggaBallz");
             IvParameterSpec ivParameterSpec = generateIv();
 
-            obfuscator.classes().forEach(classNode -> {
+            obfuscator.getClassesOriginal().forEach(classNode -> {
                 classNode.methods.forEach(methodNode -> {
                     methodNode.instructions.forEach(instruction -> {
                         if (instruction.getOpcode() == Opcodes.LDC) {
