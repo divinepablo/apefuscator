@@ -10,18 +10,18 @@ import org.objectweb.asm.tree.*;
 
 import java.util.ArrayList;
 
-public class FlowTransformer extends me.divine.apefuscator.transformers.Transformer {
+public class WrapperMethodTransformer extends me.divine.apefuscator.transformers.Transformer {
 
-    Logger LOGGER = LogManager.getLogger(FlowTransformer.class);
+    Logger LOGGER = LogManager.getLogger(WrapperMethodTransformer.class);
 
-    public FlowTransformer() {
-        super("Flow", "Transforms flow control structures");
+    public WrapperMethodTransformer() {
+        super("WrapperMethod", "Generates methods with same instructions");
     }
 
     @Override
     public void transform(Apefuscator obfuscator) {
         // TODO Auto-generated method stub
-        obfuscator.getClasses().forEach(classNode -> {
+        obfuscator.classes().forEach(classNode -> {
             classNode.fields.forEach(fieldNode -> {
                 if (fieldNode.desc.equals("Ljava/lang/String;")) {
 //                    fieldNode.desc = "Ljava/lang/Object;";

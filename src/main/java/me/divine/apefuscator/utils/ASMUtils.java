@@ -379,6 +379,10 @@ public class ASMUtils implements Opcodes {
         return copyMethod;
     }
 
+    public static boolean isMethodFromSuperclass(ClassNode superClass, MethodNode methodNode) {
+        return superClass != null && superClass.methods.stream().anyMatch(superMethodNode -> superMethodNode.name.equals(methodNode.name));
+    }
+
     // make method descriptor generator
     public static String makeDescriptor(String returnType, String... args) {
         return Type.getMethodDescriptor(Type.getType(returnType), Arrays.stream(args).map(Type::getType).toArray(Type[]::new));
@@ -386,5 +390,19 @@ public class ASMUtils implements Opcodes {
 
     public static String makeDescriptor(Type returnType, Type... args) {
         return Type.getMethodDescriptor(returnType, args);
+    }// make method descriptor generator
+    public static String makeDescriptor(String returnType) {
+        return Type.getMethodDescriptor(Type.getType(returnType));
+    }
+
+    public static String makeDescriptor(Type returnType) {
+        return Type.getMethodDescriptor(returnType);
+    }
+
+    public static String changeReturnType(String desc, Type target) {
+        return Type.getMethodDescriptor(target, getArgumentTypes(desc));
+    }
+    public static String changeReturnType(String desc, String target) {
+        return Type.getMethodDescriptor(getType(target), getArgumentTypes(desc));
     }
 }

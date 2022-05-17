@@ -149,11 +149,11 @@ public class Apefuscator {
         }
     }
 
-    private Collection<ClassNode> classes() {
-        return getClasses();
+    public Map<String, ClassNode> getClasses() {
+        return classes;
     }
 
-    public Collection<ClassNode> getClasses() {
+    public Collection<ClassNode> classes() {
         Collection<ClassNode> classes = new ArrayList<>(this.classes.values());
         classes.removeIf(ignoredList::contains);
         return classes;

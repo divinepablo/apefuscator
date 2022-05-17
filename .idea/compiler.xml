@@ -12,7 +12,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="apefuscator" options="--add-modules java.base" />
+      <module name="apefuscator" options="" />
     </option>
   </component>
 </project>
