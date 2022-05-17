@@ -1,12 +1,10 @@
 package me.divine.apefuscator.transformers.impl;
 
-import com.google.gson.GsonBuilder;
 import me.divine.apefuscator.Apefuscator;
 import me.divine.apefuscator.transformers.Transformer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.objectweb.asm.tree.IntInsnNode;
-import org.objectweb.asm.tree.MethodNode;
 
 public class MathTransformer extends Transformer {
 
@@ -19,7 +17,7 @@ public class MathTransformer extends Transformer {
 
     @Override
     public void transform(Apefuscator var1) {
-        var1.getClasses().forEach(clazz -> {
+        var1.classes().forEach(clazz -> {
             clazz.methods.forEach(method -> {
                 method.instructions.forEach(instruction -> {
                     if (instruction instanceof IntInsnNode) {

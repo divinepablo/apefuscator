@@ -3,9 +3,9 @@ package me.divine.apefuscator.transformers.impl;
 import me.divine.apefuscator.Apefuscator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.objectweb.asm.Handle;
 import org.objectweb.asm.tree.InvokeDynamicInsnNode;
-import org.objectweb.asm.tree.MethodInsnNode;
+
+import java.util.ArrayList;
 
 public class InvokeDynamicTransformer extends me.divine.apefuscator.transformers.Transformer {
     Logger LOGGER = LogManager.getLogger(InvokeDynamicTransformer.class);
@@ -16,20 +16,18 @@ public class InvokeDynamicTransformer extends me.divine.apefuscator.transformers
 
     @Override
     public void transform(Apefuscator obfuscator) {
-        obfuscator.getClasses().forEach(classNode -> {
+        ArrayList<InvokeDynamicInsnNode> test = new ArrayList<>();
+        obfuscator.classes().forEach(classNode -> {
             classNode.methods.forEach(methodNode -> {
                 methodNode.instructions.forEach(instruction -> {
                     if (instruction instanceof InvokeDynamicInsnNode) {
                         InvokeDynamicInsnNode invokeDynamicInsnNode = (InvokeDynamicInsnNode) instruction;
-                        LOGGER.info("Found invoke dynamic instruction {} in method {}", invokeDynamicInsnNode.name, methodNode.name);
-                        LOGGER.info("Invoke dynamic method name: {}", invokeDynamicInsnNode.name);
-                        LOGGER.info("Invoke dynamic method desc: {}", invokeDynamicInsnNode.desc);
-                        LOGGER.info("Invoke dynamic bootstrap method: {}", invokeDynamicInsnNode.bsm);
-                        LOGGER.info("Invoke dynamic bootstrap method args: {}", invokeDynamicInsnNode.bsmArgs);
-                        LOGGER.info("Invoke dynamic bootstrap method handle owner: {}", invokeDynamicInsnNode.bsm.getOwner());
-                        LOGGER.info("Invoke dynamic bootstrap method handle name: {}", invokeDynamicInsnNode.bsm.getName());
-                        LOGGER.info("Invoke dynamic bootstrap method handle desc: {}", invokeDynamicInsnNode.bsm.getDesc());
+                        test.add(invokeDynamicInsnNode);
+
                     }
+                });
+                test.forEach(invokeDynamicInsnNode -> {
+                    methodNode.instructions.add(invokeDynamicInsnNode);
                 });
             });
         });
