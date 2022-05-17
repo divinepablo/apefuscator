@@ -85,7 +85,7 @@ public class NameTransformer extends me.divine.apefuscator.transformers.Transfor
 
     @Override
     public void transform(Apefuscator obfuscator) {
-        obfuscator.classes().forEach(classNode -> {
+        obfuscator.getClassesOriginal().forEach(classNode -> {
             ClassNode superClass = getSuperClass(obfuscator, classNode);
 
             if (!isMain(classNode) && isClasses()) {
