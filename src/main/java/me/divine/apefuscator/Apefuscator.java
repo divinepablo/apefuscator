@@ -149,8 +149,8 @@ public class Apefuscator {
         }
     }
 
-    private Collection<ClassNode> classes() {
-        return getClasses();
+    public Map<String, ClassNode> classes() {
+        return classes;
     }
 
     public Collection<ClassNode> getClasses() {

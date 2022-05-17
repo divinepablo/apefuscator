@@ -7,8 +7,8 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Loading Apefuscator v1.0");
         Apefuscator.builder()
-                .input(Path.of("test", "input", "elloWorld.jar"))
-//                .input(Path.of("test", "irc.jar"))
+//                .input(Path.of("test", "input", "elloWorld.jar"))
+                .input(Path.of("test", "irc.jar"))
                 .output(Path.of("test", "Aped-HelloWorld.jar"))
 //                .addTransformer(new MathTransformer())
                 .ignored("com", "kotlin", "org")
@@ -17,7 +17,7 @@ public class Main {
 //                .addTransformer(new StringEncryptionTransformer())
                 .addTransformer(new InvokeDynamicTransformer())
 //                .addTransformer(new LabelRenamerTransformer())
-//                .addTransformer(new NameTransformer('難', '手', NameTransformer.ALL, true))
+                .addTransformer(new BetterNameTransformer())
                 .build()
                 .start();  // start the apefuscator
 

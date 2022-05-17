@@ -1,19 +1,13 @@
-[12:16:15] [main/INFO] - Ignoring 3 classes
-[12:16:15] [main/INFO] - Adding transformer: InvokeDynamic
-[12:16:15] [main/WARN] - Output file already exist, data will be overwritten
-[12:16:15] [main/INFO] - Starting Apefuscator
-[12:16:15] [main/INFO] - Loading input file: test/input/elloWorld.jar
-[12:16:15] [main/INFO] - Loaded input file: test/input/elloWorld.jar
+[09:15:17] [main/INFO] - Ignoring 3 classes
+[09:15:17] [main/INFO] - Adding transformer: InvokeDynamic
+[09:15:17] [main/INFO] - Adding transformer: ClassRemapper
+[09:15:17] [main/WARN] - Output file already exist, data will be overwritten
+[09:15:17] [main/INFO] - Starting Apefuscator
+[09:15:17] [main/INFO] - Loading input file: test\irc.jar
+[09:15:17] [main/INFO] - Loaded input file: test\irc.jar
 
-[12:16:15] [main/INFO] - Transforming classes
-[12:16:15] [main/INFO] - Found invoke dynamic instruction makeConcatWithConstants in method main
-[12:16:15] [main/INFO] - Invoke dynamic method name: makeConcatWithConstants
-[12:16:15] [main/INFO] - Invoke dynamic method desc: (I)Ljava/lang/String;
-[12:16:15] [main/INFO] - Invoke dynamic bootstrap method: java/lang/invoke/StringConcatFactory.makeConcatWithConstants(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite; (6)
-[12:16:15] [main/INFO] - Invoke dynamic bootstrap method args: Number -
-[12:16:15] [main/INFO] - Invoke dynamic bootstrap method handle owner: java/lang/invoke/StringConcatFactory
-[12:16:15] [main/INFO] - Invoke dynamic bootstrap method handle name: makeConcatWithConstants
-[12:16:15] [main/INFO] - Invoke dynamic bootstrap method handle desc: (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
-[12:16:15] [main/INFO] - Saving output file: test/Aped-HelloWorld.jar
-[12:16:15] [main/INFO] - Saved output file: test/Aped-HelloWorld.jar
+[09:15:17] [main/INFO] - Transforming classes
+[09:15:17] [main/INFO] - mappings {}
+[09:15:19] [main/INFO] - Saving output file: test\Aped-HelloWorld.jar
+[09:15:23] [main/INFO] - Saved output file: test\Aped-HelloWorld.jar
 

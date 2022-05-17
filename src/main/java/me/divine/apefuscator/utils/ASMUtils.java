@@ -387,4 +387,8 @@ public class ASMUtils implements Opcodes {
     public static String makeDescriptor(Type returnType, Type... args) {
         return Type.getMethodDescriptor(returnType, args);
     }
+
+    public static boolean isMethodFromSuperclass(ClassNode superClass, MethodNode methodNode) {
+        return superClass != null && superClass.methods.stream().anyMatch(superMethodNode -> superMethodNode.name.equals(methodNode.name));
+    }
 }
