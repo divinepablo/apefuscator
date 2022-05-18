@@ -12,7 +12,7 @@ public class SourceFileTransformer extends Transformer {
 
     @Override
     public void transform(Apefuscator obfuscator) {
-        obfuscator.classes().forEach(classNode -> {
+        obfuscator.getClassesOriginal().forEach(classNode -> {
             if (className) {
                 classNode.sourceFile = classNode.name + ".java";
             } else {

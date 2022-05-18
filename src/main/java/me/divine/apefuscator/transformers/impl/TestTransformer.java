@@ -22,7 +22,7 @@ public class TestTransformer extends me.divine.apefuscator.transformers.Transfor
 
     @Override
     public void transform(Apefuscator obfuscator) {
-        obfuscator.classes().forEach(classNode -> {
+        obfuscator.getClassesOriginal().forEach(classNode -> {
             classNode.methods.forEach(methodNode -> {
                 methodNode.instructions.forEach(instruction -> {
                     if (instruction instanceof LdcInsnNode) {

@@ -9,16 +9,17 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Loading Apefuscator v1.0");
         Apefuscator.builder()
-                .input(Path.of("test", "input","elloWorld.jar"))
+//                .input(Path.of("test", "input", "elloWorld.jar"))
+                .input(Path.of("test", "irc.jar"))
                 .output(Path.of("test", "Aped-HelloWorld.jar"))
-                .ignored("com", "kotlin", "org", "net/minecraft/client/main")
-                .writerFlag(ClassWriter.COMPUTE_MAXS)
-                .readerFlag(ClassReader.SKIP_FRAMES)
-//                .addTransformer(new BetterNameTransformer("難", "手"))
-//                .addTransformer(new BetterNameTransformer("aaaaa", "bbbbb"))
-                .addTransformer(new MathTransformer())
-                .addTransformer(new TestTransformer())
-                .addTransformer(new SourceFileTransformer(true))
+//                .addTransformer(new MathTransformer())
+                .ignored("com", "kotlin", "org")
+//                .addTransformer(new TestTransformer())
+//                .addTransformer(new FlowTransformer())
+//                .addTransformer(new StringEncryptionTransformer())
+                .addTransformer(new InvokeDynamicTransformer())
+//                .addTransformer(new LabelRenamerTransformer())
+                .addTransformer(new BetterNameTransformer())
                 .build()
                 .start();  // start the apefuscator
 

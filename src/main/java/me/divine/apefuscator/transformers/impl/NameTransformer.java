@@ -85,7 +85,7 @@ public class NameTransformer extends me.divine.apefuscator.transformers.Transfor
 
     @Override
     public void transform(Apefuscator obfuscator) {
-        obfuscator.classes().forEach(classNode -> {
+        obfuscator.getClassesOriginal().forEach(classNode -> {
             ClassNode superClass = getSuperClass(obfuscator, classNode);
 
             if (!isMain(classNode) && isClasses()) {
@@ -136,9 +136,9 @@ public class NameTransformer extends me.divine.apefuscator.transformers.Transfor
 //        LOGGER.info("Finished renaming. Fixing methods and fields.");
         if (isClasses()) {
             LOGGER.info("Fixing methods.");
-            obfuscator.classes().forEach(this::fixMethods);
+            obfuscator.getClassesOriginal().forEach(this::fixMethods);
             LOGGER.info("Fixing fields.");
-            obfuscator.classes().forEach(this::fixFields);
+            obfuscator.getClassesOriginal().forEach(this::fixFields);
         }
     }
 

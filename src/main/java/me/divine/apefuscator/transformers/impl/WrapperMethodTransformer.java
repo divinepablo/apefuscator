@@ -21,7 +21,7 @@ public class WrapperMethodTransformer extends me.divine.apefuscator.transformers
     @Override
     public void transform(Apefuscator obfuscator) {
         // TODO Auto-generated method stub
-        obfuscator.classes().forEach(classNode -> {
+        obfuscator.getClassesOriginal().forEach(classNode -> {
             classNode.fields.forEach(fieldNode -> {
                 if (fieldNode.desc.equals("Ljava/lang/String;")) {
 //                    fieldNode.desc = "Ljava/lang/Object;";

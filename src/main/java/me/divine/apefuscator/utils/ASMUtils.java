@@ -154,6 +154,7 @@ public class ASMUtils implements Opcodes {
     public static boolean isStatic(MethodNode method) {
         return isStatic(method.access);
     }
+
     public static boolean isStatic(int access) {
         return (access & Opcodes.ACC_STATIC) != 0;
     }
@@ -391,6 +392,7 @@ public class ASMUtils implements Opcodes {
     public static String makeDescriptor(Type returnType, Type... args) {
         return Type.getMethodDescriptor(returnType, args);
     }// make method descriptor generator
+
     public static String makeDescriptor(String returnType) {
         return Type.getMethodDescriptor(Type.getType(returnType));
     }
@@ -402,7 +404,9 @@ public class ASMUtils implements Opcodes {
     public static String changeReturnType(String desc, Type target) {
         return Type.getMethodDescriptor(target, getArgumentTypes(desc));
     }
+
     public static String changeReturnType(String desc, String target) {
         return Type.getMethodDescriptor(getType(target), getArgumentTypes(desc));
     }
+
 }

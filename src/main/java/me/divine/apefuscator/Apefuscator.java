@@ -160,14 +160,18 @@ public class Apefuscator {
         LOGGER.info("Finished transforming classes in {} milliseconds", System.currentTimeMillis() - beforebefore);
     }
 
-    public Map<String, ClassNode> getClasses() {
+    public Map<String, ClassNode> classes() {
         return classes;
     }
 
-    public Collection<ClassNode> classes() {
+    public Collection<ClassNode> getClasses() {
         Collection<ClassNode> classes = new ArrayList<>(this.classes.values());
         classes.removeIf(ignoredList::contains);
         return classes;
+    }
+
+    public Collection<ClassNode> getClassesOriginal() {
+        return classes.values();
     }
 
     public ClassNode getClass(String name) {
