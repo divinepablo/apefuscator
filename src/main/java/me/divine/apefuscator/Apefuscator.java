@@ -29,6 +29,8 @@ public class Apefuscator {
     private final ArrayList<Transformer> transformers = new ArrayList<>();
     private final ArrayList<String> ignoredStrings = new ArrayList<>();
     private final ArrayList<ClassNode> ignoredList = new ArrayList<>();
+    private final int readerMode;
+    private final int writerMode;
 
     private Apefuscator(ApefuscatorBuilder builder) throws FileNotFoundException {
         if (!builder.input.toFile().exists())
@@ -41,6 +43,8 @@ public class Apefuscator {
         this.output = builder.output;
         this.transformers.addAll(builder.transformers);
         this.ignoredStrings.addAll(builder.ignored);
+        this.readerMode = builder.read;
+        this.writerMode = builder.writer;
 
         System.out.println();
     }
@@ -55,7 +59,7 @@ public class Apefuscator {
         FileUtil.loadFilesFromZip(input.toString()).forEach((name, data) -> {
             try {
                 if (ClassUtil.isClass(name, data)) {
-                    ClassNode classNode = ClassUtil.loadClass(data, ClassReader.SKIP_FRAMES);
+                    ClassNode classNode = ClassUtil.loadClass(data, readerMode);
 
                     classes.put(classNode.name, classNode);
                     originalClasses.put(classNode.name, ClassUtil.copy(classNode)); //yes
@@ -87,7 +91,7 @@ public class Apefuscator {
 
             classes.forEach((ignored, classNode) -> {
                 try {
-                    byte[] data = ClassUtil.classToBytes(classNode, 0);
+                    byte[] data = ClassUtil.classToBytes(classNode, writerMode);
                     zipOutputStream.putNextEntry(new ZipEntry(classNode.name + ".class"));
                     zipOutputStream.write(data);
                 } catch (Exception e) {
@@ -137,16 +141,23 @@ public class Apefuscator {
 
     public void start() {
         LOGGER.info("Starting Apefuscator");
+        long beforebeforebefore = System.currentTimeMillis();
         load();
         transform();
         save();
+        LOGGER.info("Finished in {} milliseconds", System.currentTimeMillis() - beforebeforebefore);
     }
 
     private void transform() {
         LOGGER.info("Transforming classes");
+        long beforebefore = System.currentTimeMillis();
         for (Transformer transformer : transformers) {
+            long before = System.currentTimeMillis();
+            LOGGER.info("Using {} transformer", transformer.getName());
             transformer.transform(this);
+            LOGGER.info("Finished in {} milliseconds", System.currentTimeMillis() - before);
         }
+        LOGGER.info("Finished transforming classes in {} milliseconds", System.currentTimeMillis() - beforebefore);
     }
 
     public Map<String, ClassNode> getClasses() {
@@ -193,6 +204,8 @@ public class Apefuscator {
         private Path output = Path.of("output.jar");
         private ArrayList<Transformer> transformers = new ArrayList<>();
         private ArrayList<String> ignored = new ArrayList<>();
+        private int read;
+        private int writer;
 
         public ApefuscatorBuilder input(Path input) {
             this.input = input;
@@ -201,6 +214,15 @@ public class Apefuscator {
 
         public ApefuscatorBuilder output(Path output) {
             this.output = output;
+            return this;
+        }
+
+        public ApefuscatorBuilder writerFlag(int writer) {
+            this.writer = writer;
+            return this;
+        }
+        public ApefuscatorBuilder readerFlag(int read) {
+            this.read = read;
             return this;
         }
 

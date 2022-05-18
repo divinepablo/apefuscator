@@ -4,6 +4,9 @@ import me.divine.apefuscator.Apefuscator;
 import me.divine.apefuscator.transformers.Transformer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.objectweb.asm.Opcodes;
+import org.objectweb.asm.tree.AbstractInsnNode;
+import org.objectweb.asm.tree.InsnNode;
 import org.objectweb.asm.tree.IntInsnNode;
 
 public class MathTransformer extends Transformer {
@@ -20,12 +23,39 @@ public class MathTransformer extends Transformer {
         var1.classes().forEach(clazz -> {
             clazz.methods.forEach(method -> {
                 method.instructions.forEach(instruction -> {
-                    if (instruction instanceof IntInsnNode) {
-                        IntInsnNode node = (IntInsnNode) instruction;
-                        LOGGER.info("Found an IntInsnNode {} {}", node.getOpcode(), node.operand);
+                    if (instruction.getOpcode() == Opcodes.IMUL) {
+                        InsnNode node = new InsnNode(Opcodes.ISHL);
+                        AbstractInsnNode prevNode = instruction.getPrevious();
+                        if (prevNode instanceof IntInsnNode) {
+                            if (((IntInsnNode) prevNode).operand % 2 == 0) {
+                                ((IntInsnNode) prevNode).operand = ((IntInsnNode) prevNode).operand / 4;
+                                method.instructions.insert(prevNode, node);
+                                method.instructions.remove(instruction);
+                            }
+                        }
+                    }else if (instruction.getOpcode() == Opcodes.IDIV) {
+                        InsnNode node = new InsnNode(Opcodes.ISHR);
+                        AbstractInsnNode prevNode = instruction.getPrevious();
+                        if (prevNode instanceof IntInsnNode) {
+                            if (((IntInsnNode) prevNode).operand % 2 == 0) {
+                                ((IntInsnNode) prevNode).operand =  toBitThing(((IntInsnNode) prevNode).operand);
+                                method.instructions.insert(prevNode, node);
+                                method.instructions.remove(instruction);
+                            }
+                        }
                     }
                 });
             });
         });
+    }
+
+    private int toBitThing(int i) {
+        int asd = 0;
+        for (int j = 1; j < i + 1; j++) {
+            if (j % 2 == 0) {
+                asd++;
+            }
+        }
+        return asd;
     }
 }

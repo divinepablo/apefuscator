@@ -1,12 +1,21 @@
-[08:38:56] [main/INFO] - Ignoring 4 classes
-[08:38:56] [main/INFO] - Adding transformer: test
-[08:38:56] [main/INFO] - Adding transformer: SourceFile
-[08:38:56] [main/WARN] - Output file already exist, data will be overwritten
-[08:38:56] [main/INFO] - Starting Apefuscator
-[08:38:56] [main/INFO] - Loading input file: test/irc.jar
-[08:38:56] [main/INFO] - Loaded input file: test/irc.jar
+[19:54:57] [main/INFO] - Ignoring 4 classes
+[19:54:57] [main/INFO] - Adding transformer: Operations
+[19:54:57] [main/INFO] - Adding transformer: test
+[19:54:57] [main/INFO] - Adding transformer: SourceFile
+[19:54:57] [main/WARN] - Output file already exist, data will be overwritten
+[19:54:57] [main/INFO] - Starting Apefuscator
+[19:54:57] [main/INFO] - Loading input file: test/input/elloWorld.jar
+[19:54:57] [main/INFO] - Loaded input file: test/input/elloWorld.jar
 
-[08:38:56] [main/INFO] - Transforming classes
-[08:38:56] [main/INFO] - Saving output file: test/Aped-IRC.jar
-[08:38:57] [main/INFO] - Saved output file: test/Aped-IRC.jar
+[19:54:57] [main/INFO] - Transforming classes
+[19:54:57] [main/INFO] - Using Operations transformer
+[19:54:57] [main/INFO] - Finished in 6 milliseconds
+[19:54:57] [main/INFO] - Using test transformer
+[19:54:57] [main/INFO] - Finished in 21 milliseconds
+[19:54:57] [main/INFO] - Using SourceFile transformer
+[19:54:57] [main/INFO] - Finished in 1 milliseconds
+[19:54:57] [main/INFO] - Finished transforming classes in 30 milliseconds
+[19:54:57] [main/INFO] - Saving output file: test/Aped-HelloWorld.jar
+[19:54:57] [main/INFO] - Saved output file: test/Aped-HelloWorld.jar
 
+[19:54:57] [main/INFO] - Finished in 121 milliseconds
