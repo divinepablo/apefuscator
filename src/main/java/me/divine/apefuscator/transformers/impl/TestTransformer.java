@@ -6,10 +6,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
-import org.objectweb.asm.tree.InsnList;
-import org.objectweb.asm.tree.InsnNode;
-import org.objectweb.asm.tree.LdcInsnNode;
-import org.objectweb.asm.tree.MethodInsnNode;
+import org.objectweb.asm.tree.*;
+
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class TestTransformer extends me.divine.apefuscator.transformers.Transformer {
 
@@ -17,35 +17,46 @@ public class TestTransformer extends me.divine.apefuscator.transformers.Transfor
     private Logger LOGGER = LogManager.getLogger(TestTransformer.class);
 
     public TestTransformer() {
-        super("test", "Test");
+        super("MethodWrapper", "weird thing");
     }
 
     @Override
     public void transform(Apefuscator obfuscator) {
-        obfuscator.getClassesOriginal().forEach(classNode -> {
+        obfuscator.getClasses().forEach(classNode -> {
+            ArrayList<MethodNode> newMethods = new ArrayList<>();
             classNode.methods.forEach(methodNode -> {
-                methodNode.instructions.forEach(instruction -> {
-                    if (instruction instanceof LdcInsnNode) {
-                        if (ASMUtils.isString(instruction)) {
-                            InsnList toStringList = new InsnList();
-                            for (int i = 0; i < 1000; i++) {
-                                MethodInsnNode methodInsnNode = new MethodInsnNode(Opcodes.INVOKEVIRTUAL, "java/lang/Object", "toString", "()Ljava/lang/String;");
-                                toStringList.insert(methodInsnNode);
-                            }
-                            methodNode.instructions.insert(instruction, toStringList);
-                        }
+
+                if (!Objects.equals(methodNode.name, "<init>") && ASMUtils.getArgumentSize(methodNode.desc) < 1) {
+                    MethodNode method = ASMUtils.copyMethod(methodNode);
+                    method.name = "new_" + method.name;
+                    newMethods.add(method);
+                    methodNode.instructions.clear();
+                    methodNode.instructions.insert(new VarInsnNode(Opcodes.ALOAD, 0));
+                    methodNode.instructions.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL, classNode.name, method.name, method.desc));
+                    switch (Type.getType(method.desc).getSort()) {
+                        case Type.BOOLEAN:
+                        case Type.CHAR:
+                        case Type.INT:
+                        case Type.BYTE:
+                            methodNode.instructions.add(new InsnNode(Opcodes.IRETURN));
+                            break;
+                        case Type.LONG:
+                            methodNode.instructions.add(new InsnNode(Opcodes.LRETURN));
+                            break;
+                        case Type.DOUBLE:
+                            methodNode.instructions.add(new InsnNode(Opcodes.DRETURN));
+                            break;
+                        case Type.FLOAT:
+                            methodNode.instructions.add(new InsnNode(Opcodes.FRETURN));
+                            break;
+                        default:
+                            methodNode.instructions.add(new InsnNode(Opcodes.ARETURN));
+                            break;
                     }
-                    methodNode.localVariables.forEach(localVariableNode -> {
-                        localVariableNode.desc = "Ljava/lang/Object;";
-                    });
-                });
-                if (ASMUtils.getReturnType(methodNode.desc) != Type.VOID_TYPE) {
-                    methodNode.desc = ASMUtils.changeReturnType(methodNode.desc, "Ljava/lang/Object;");
+
                 }
             });
-            classNode.fields.forEach(fieldNode -> {
-                fieldNode.desc = "Ljava/lang/Object;";
-            });
+            classNode.methods.addAll(newMethods);
         });
     }
 }

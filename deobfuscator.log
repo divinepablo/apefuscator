@@ -1,0 +1,25 @@
+[14:05:54] [main/INFO] - Ignoring 3 classes
+[14:05:54] [main/INFO] - Adding transformer: Objectifer
+[14:05:54] [main/INFO] - Adding transformer: Renamer
+[14:05:54] [main/INFO] - Adding transformer: SourceFile
+[14:05:54] [main/WARN] - Output file already exist, data will be overwritten
+[14:05:54] [main/INFO] - Starting Apefuscator
+[14:05:54] [main/INFO] - Loading input file: test/irc.jar
+[14:05:55] [main/INFO] - Loaded input file: test/irc.jar
+
+[14:05:55] [main/INFO] - Transforming classes
+[14:05:55] [main/INFO] - Using Objectifer transformer
+[14:05:55] [main/INFO] - Finished in 27 milliseconds
+[14:05:55] [main/INFO] - Using Renamer transformer
+[14:05:55] [main/INFO] - Found main method in class Main
+[14:05:55] [main/INFO] - Found main method in class Main
+[14:05:55] [main/INFO] - Found main method in class Main
+[14:05:55] [main/INFO] - Found main method in class Main
+[14:05:55] [main/INFO] - Finished in 62 milliseconds
+[14:05:55] [main/INFO] - Using SourceFile transformer
+[14:05:55] [main/INFO] - Finished in 12 milliseconds
+[14:05:55] [main/INFO] - Finished transforming classes in 101 milliseconds
+[14:05:55] [main/INFO] - Saving output file: test/Aped-IRC.jar
+[14:05:56] [main/INFO] - Saved output file: test/Aped-IRC.jar
+
+[14:05:56] [main/INFO] - Finished in 1557 milliseconds

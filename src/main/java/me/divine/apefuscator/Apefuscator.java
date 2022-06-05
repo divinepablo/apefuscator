@@ -5,7 +5,6 @@ import me.divine.apefuscator.utils.ClassUtil;
 import me.divine.apefuscator.utils.FileUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.tree.ClassNode;
 
 import java.io.FileNotFoundException;
@@ -13,6 +12,7 @@ import java.io.FileOutputStream;
 import java.nio.file.Path;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -27,10 +27,18 @@ public class Apefuscator {
     private final Path input;
     private final Path output;
     private final ArrayList<Transformer> transformers = new ArrayList<>();
-    private final ArrayList<String> ignoredStrings = new ArrayList<>();
-    private final ArrayList<ClassNode> ignoredList = new ArrayList<>();
+    private final CopyOnWriteArrayList<String> ignoredStrings = new CopyOnWriteArrayList<>();
+    private final CopyOnWriteArrayList<ClassNode> ignoredList = new CopyOnWriteArrayList<>();
     private final int readerMode;
     private final int writerMode;
+
+    public CopyOnWriteArrayList<String> getIgnoredStrings() {
+        return ignoredStrings;
+    }
+
+    public CopyOnWriteArrayList<ClassNode> getIgnoredList() {
+        return ignoredList;
+    }
 
     private Apefuscator(ApefuscatorBuilder builder) throws FileNotFoundException {
         if (!builder.input.toFile().exists())
@@ -64,8 +72,9 @@ public class Apefuscator {
                     classes.put(classNode.name, classNode);
                     originalClasses.put(classNode.name, ClassUtil.copy(classNode)); //yes
                     for (String ignoredString : ignoredStrings) {
-                        if (classNode.name.startsWith(ignoredString) || classNode.equals(ignoredString)) {
+                        if (classNode.name.equals(ignoredString) || classNode.name.startsWith(ignoredString)) {
                             ignoredList.add(classNode);
+                            ignoredStrings.add(classNode.name);
                         }
                     }
 
@@ -98,7 +107,7 @@ public class Apefuscator {
                     LOGGER.error("Error when saving a class", e);
                     e.printStackTrace();
                     try {
-                        byte[] data = ClassUtil.classToBytes(originalClasses.get(classNode.name), 0);
+                        byte[] data = ClassUtil.classToBytes(originalClasses.get(classNode.name), writerMode);
 
                         zipOutputStream.putNextEntry(new ZipEntry(classNode.name + ".class"));
                         zipOutputStream.write(data);
@@ -161,8 +170,15 @@ public class Apefuscator {
     }
 
     public Map<String, ClassNode> classes() {
+        Map<String, ClassNode> classes = new ConcurrentHashMap<>(this.classes);
+        classes.keySet().forEach(key -> {
+            if (ignoredStrings.contains(key)) {
+                classes.remove(key);
+            }
+        });
         return classes;
     }
+
 
     public Collection<ClassNode> getClasses() {
         Collection<ClassNode> classes = new ArrayList<>(this.classes.values());
@@ -170,17 +186,18 @@ public class Apefuscator {
         return classes;
     }
 
-    public Collection<ClassNode> getClassesOriginal() {
-        return classes.values();
-    }
-
     public ClassNode getClass(String name) {
         return classes.values().stream().filter(classNode -> classNode.name.equals(name)).findFirst().orElse(null);
     }
 
 
+
+
     public Map<String, ClassNode> getOriginalClasses() {
         return originalClasses;
+    }
+    public Map<String, ClassNode> getClassMap() {
+        return classes;
     }
 
     public Map<String, byte[]> getFiles() {
