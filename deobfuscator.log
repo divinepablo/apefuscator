@@ -1,25 +1,72 @@
-[14:05:54] [main/INFO] - Ignoring 3 classes
-[14:05:54] [main/INFO] - Adding transformer: Objectifer
-[14:05:54] [main/INFO] - Adding transformer: Renamer
-[14:05:54] [main/INFO] - Adding transformer: SourceFile
-[14:05:54] [main/WARN] - Output file already exist, data will be overwritten
-[14:05:54] [main/INFO] - Starting Apefuscator
-[14:05:54] [main/INFO] - Loading input file: test/irc.jar
-[14:05:55] [main/INFO] - Loaded input file: test/irc.jar
+[13:45:58] [main/INFO] - Ignoring 3 classes
+[13:45:58] [main/INFO] - Adding transformer: Objectifer
+[13:45:58] [main/INFO] - Adding transformer: Renamer
+[13:45:58] [main/INFO] - Adding transformer: SourceFile
+[13:45:58] [main/INFO] - Adding transformer: Objectifer
+[13:45:58] [main/INFO] - Adding transformer: Renamer
+[13:45:58] [main/INFO] - Adding transformer: WrapperMethod
+[13:45:58] [main/WARN] - Output file already exist, data will be overwritten
+[13:45:58] [main/INFO] - Starting Apefuscator
+[13:45:58] [main/INFO] - Loading input file: test\irc.jar
+[13:45:58] [main/INFO] - Loaded input file: test\irc.jar
 
-[14:05:55] [main/INFO] - Transforming classes
-[14:05:55] [main/INFO] - Using Objectifer transformer
-[14:05:55] [main/INFO] - Finished in 27 milliseconds
-[14:05:55] [main/INFO] - Using Renamer transformer
-[14:05:55] [main/INFO] - Found main method in class Main
-[14:05:55] [main/INFO] - Found main method in class Main
-[14:05:55] [main/INFO] - Found main method in class Main
-[14:05:55] [main/INFO] - Found main method in class Main
-[14:05:55] [main/INFO] - Finished in 62 milliseconds
-[14:05:55] [main/INFO] - Using SourceFile transformer
-[14:05:55] [main/INFO] - Finished in 12 milliseconds
-[14:05:55] [main/INFO] - Finished transforming classes in 101 milliseconds
-[14:05:55] [main/INFO] - Saving output file: test/Aped-IRC.jar
-[14:05:56] [main/INFO] - Saved output file: test/Aped-IRC.jar
+[13:45:58] [main/INFO] - Transforming classes
+[13:45:58] [main/INFO] - Using Objectifer transformer
+[13:45:58] [main/INFO] - Finished in 10 milliseconds
+[13:45:58] [main/INFO] - Using Renamer transformer
+[13:45:58] [main/INFO] - Found main method in class Main
+[13:45:58] [main/INFO] - Found main method in class Main
+[13:45:58] [main/INFO] - Found main method in class Main
+[13:45:58] [main/INFO] - Found main method in class Main
+[13:45:58] [main/INFO] - Finished in 23 milliseconds
+[13:45:58] [main/INFO] - Using SourceFile transformer
+[13:45:58] [main/INFO] - Finished in 5 milliseconds
+[13:45:58] [main/INFO] - Using Objectifer transformer
+[13:45:58] [main/INFO] - Finished in 4 milliseconds
+[13:45:58] [main/INFO] - Using Renamer transformer
+[13:45:58] [main/INFO] - Found main method in class Main
+[13:45:58] [main/INFO] - Found main method in class Main
+[13:45:58] [main/INFO] - Found main method in class Main
+[13:45:58] [main/INFO] - Found main method in class Main
+[13:45:58] [main/INFO] - Finished in 12 milliseconds
+[13:45:58] [main/INFO] - Using WrapperMethod transformer
+[13:45:58] [main/INFO] - Making wrapper method for OpenableMainMappingHandlerInstanceSpringSingletonSingletonNetworkHandlerProxy613766
+[13:45:58] [main/INFO] - Making wrapper method for OpenableBeanMainMappingEntryMappingInstanceObjectHandlerFactoryMainHandlerAbstractSingletonBuilderProxyHandlerBeanMainSingletonBuilder856216
+[13:45:58] [main/INFO] - Making wrapper method for FactoryControllerPipelineOpenableNetworkHandlerMainHandlerBeanHandlerAppletMXBeanNetworkHandlerInstanceSpringProxySingletonObjectEntrySingletonMainMXBeanControllerFactorySingletonInstanceBean871273
+[13:45:58] [main/INFO] - Making wrapper method for InstanceSpringInstanceAppletAppletOpenableObjectMainClientNetworkHandlerCloseableNetworkHandlerSpringFactoryControllerCloseableMainNetworkHandlerClientAppletPipelineBeanPipeline316132
+[13:45:58] [main/INFO] - Making wrapper method for HandlerMainProxyProxyApplet049583
+[13:45:58] [main/INFO] - Making wrapper method for MXBeanProxyMappingFactoryBuilderClientCloseableEntryAbstractProxy368002
+[13:45:58] [main/INFO] - Making wrapper method for ClientBuilderObjectPipelineBeanTypedEntryMainBeanOpenableOpenableCloseableObjectController230264
+[13:45:58] [main/INFO] - Making wrapper method for PipelineAbstractHandlerMainControllerMainMainSingletonAppletObjectNetworkHandlerMainAbstractOpenableHandlerMainClientEntryPipeline811673
+[13:45:58] [main/INFO] - Making wrapper method for EntryMXBeanOpenableProxySpringNetworkHandlerFactoryAppletAppletCloseable496320
+[13:45:58] [main/INFO] - Making wrapper method for onOpen
+[13:45:58] [main/INFO] - Making wrapper method for onClose
+[13:45:58] [main/INFO] - Making wrapper method for onMessage
+[13:45:58] [main/INFO] - Making wrapper method for onError
+[13:45:58] [main/INFO] - Making wrapper method for onStart
+[13:45:58] [main/INFO] - Making wrapper method for main
+[13:45:58] [main/INFO] - Making wrapper method for ControllerMXBeanMappingHandlerNetworkHandlerHandlerMXBeanClientAppletProxyAppletSpring239783
+[13:45:58] [main/INFO] - Making wrapper method for ObjectNetworkHandlerCloseablePipelineCloseableOpenableFactoryNetworkHandlerCloseablePipelineCloseableTyped373794
+[13:45:58] [main/INFO] - Making wrapper method for BuilderMXBeanHandlerBuilderControllerBean048646
+[13:45:58] [main/INFO] - Making wrapper method for SingletonSingletonMXBeanHandlerNetworkHandlerAppletFactoryInstanceAbstractBeanBeanFactoryMainNetworkHandlerHandlerInstanceAbstractCloseableNetworkHandlerObjectFactoryBeanEntryFactoryAbstractMappingInstanceAbstract651444
+[13:45:58] [main/INFO] - Making wrapper method for AbstractTypedMainSingletonPipelineBuilderNetworkHandlerInstanceMappingCloseableFactoryFactory171026
+[13:45:58] [main/INFO] - Making wrapper method for MainOpenableMXBeanMainObjectObject598403
+[13:45:58] [main/INFO] - Making wrapper method for PipelineAbstractMXBeanSingletonMainBeanMainFactoryInstancePipelineSpringNetworkHandlerControllerObjectAbstractOpenableMappingOpenableObject488127
+[13:45:58] [main/INFO] - Making wrapper method for EntryProxyTyped745194
+[13:45:58] [main/INFO] - Making wrapper method for SingletonNetworkHandlerClientMainMappingMXBeanAbstractEntryPipelineBuilderBean566400
+[13:45:58] [main/INFO] - Making wrapper method for AbstractMainMainControllerBeanMXBeanController465480
+[13:45:59] [main/INFO] - Making wrapper method for MainMainAbstractOpenable223588
+[13:45:59] [main/INFO] - Making wrapper method for ObjectObjectProxyObjectPipeline517498
+[13:45:59] [main/INFO] - Making wrapper method for MappingObjectBuilderObjectMainNetworkHandlerInstanceAbstractClient714269
+[13:45:59] [main/INFO] - Making wrapper method for MainClientObjectNetworkHandlerObjectOpenableSingletonBeanBuilderFactoryBuilderOpenableFactoryFactoryCloseableMXBeanCloseableTyped168547
+[13:45:59] [main/INFO] - Making wrapper method for ObjectNetworkHandlerMainPipelineObjectEntryCloseableMainMappingBuilderBuilderClientObjectAppletEntrySingletonSpring037774
+[13:45:59] [main/INFO] - Making wrapper method for InstanceNetworkHandlerHandlerObjectAppletObjectMXBeanProxyProxyMainCloseableNetworkHandlerAbstractEntry582631
+[13:45:59] [main/INFO] - Making wrapper method for NetworkHandlerHandlerAbstractClientMXBeanCloseableInstanceProxyCloseable608068
+[13:45:59] [main/INFO] - Making wrapper method for InstanceNetworkHandlerBuilderAppletMappingMXBeanFactoryProxyHandlerAbstractClientNetworkHandlerBeanOpenableMappingFactoryPipelineEntryAbstractEntryBuilderTypedAppletMXBeanFactoryOpenableCloseable946317
+[13:45:59] [main/INFO] - Making wrapper method for main
+[13:45:59] [main/INFO] - Finished in 65 milliseconds
+[13:45:59] [main/INFO] - Finished transforming classes in 120 milliseconds
+[13:45:59] [main/INFO] - Saving output file: test\Aped-IRC.jar
+[13:45:59] [main/INFO] - Saved output file: test\Aped-IRC.jar
 
-[14:05:56] [main/INFO] - Finished in 1557 milliseconds
+[13:45:59] [main/INFO] - Finished in 897 milliseconds

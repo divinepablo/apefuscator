@@ -2,13 +2,18 @@ package me.divine.apefuscator.transformers.impl;
 
 import me.divine.apefuscator.Apefuscator;
 import me.divine.apefuscator.utils.ASMUtils;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.RandomUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.objectweb.asm.Label;
+import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class WrapperMethodTransformer extends me.divine.apefuscator.transformers.Transformer {
 
@@ -22,102 +27,46 @@ public class WrapperMethodTransformer extends me.divine.apefuscator.transformers
     public void transform(Apefuscator obfuscator) {
         // TODO Auto-generated method stub
         obfuscator.getClasses().forEach(classNode -> {
-//            classNode.fields.forEach(fieldNode -> {
-//                if (fieldNode.desc.equals("Ljava/lang/String;")) {
-////                    fieldNode.desc = "Ljava/lang/Object;";
-//                }
-//            });
-            ArrayList<MethodNode> betterMethods = new ArrayList<>();
+            List<MethodNode> nigger = new ArrayList<>();
             classNode.methods.forEach(methodNode -> {
-//                int rng = ThreadLocalRandom.current().nextInt(1, 3);
-                int rng = 2;
-                if (rng == 2) {
-
-                    if (!methodNode.name.equals("<init>") && !methodNode.name.equals("<clinit>") && !methodNode.name.equals("<cinit>")) {
-                        LOGGER.info("Making wrapper method for {}", methodNode.name);
-                        MethodNode normalMethod = ASMUtils.copyMethod(methodNode);
-                        normalMethod.name += "xd";
-                        betterMethods.add(normalMethod);
-                        methodNode.instructions.clear();
-                        InsnList il = new InsnList();
-//                        LOGGER.info("Method Descriptor: {}", methodNode.desc);
-
-
-                        int i = 1;
-                        if (!ASMUtils.isStatic(methodNode.access)) {
-                            il.insert(new VarInsnNode(Opcodes.ALOAD, 0));
-
+                if (!methodNode.name.equals("<init>") && !methodNode.name.equals("<clinit>") && !methodNode.name.equals("<cinit>")) {
+                    LOGGER.info("Making wrapper method for {}", methodNode.name);
+                    StringBuilder a = new StringBuilder();
+                    for (int i = 0; i < 50; i++) {
+                        for (int j = 0; j < 12; j++) {
+                            a.append(RandomStringUtils.random(RandomUtils.nextInt(0, 14))).append("\n");
+                            a.append(RandomStringUtils.random(RandomUtils.nextInt(0, 12))).append("\t");
                         }
-                        for (Type argumentType : ASMUtils.getArgumentTypes(methodNode.desc)) {
-                            int opcode = Opcodes.ALOAD;
-                            switch (argumentType.getSort()) {
-                                case Type.BOOLEAN:
-                                case Type.BYTE:
-                                case Type.CHAR:
-                                case Type.INT:
-                                case Type.SHORT:
-                                    opcode = Opcodes.ILOAD;
-                                    break;
-                                case Type.DOUBLE:
-                                    opcode = Opcodes.DLOAD;
-                                    break;
-                                case Type.FLOAT:
-                                    opcode = Opcodes.FLOAD;
-                                    break;
-                                case Type.LONG:
-                                    opcode = Opcodes.LLOAD;
-                                    break;
-                            }
-                            il.add(new VarInsnNode(opcode, i));
-
-                            i++;
-                        }
-
-                        if (ASMUtils.isStatic(methodNode.access)) {
-                            il.add(new MethodInsnNode(Opcodes.INVOKESTATIC, classNode.name, normalMethod.name, normalMethod.desc));
-                        } else {
-
-                            il.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL, classNode.name, normalMethod.name, normalMethod.desc));
-                        }
-
-                        switch (ASMUtils.getReturnType(methodNode.desc).getSort()) {
-                            case Type.BOOLEAN:
-                            case Type.INT:
-                            case Type.BYTE:
-                            case Type.CHAR:
-                                il.add(new InsnNode(Opcodes.IRETURN));
-                                break;
-                            case Type.DOUBLE:
-                                il.add(new InsnNode(Opcodes.DRETURN));
-                                break;
-                            case Type.FLOAT:
-                                il.add(new InsnNode(Opcodes.FRETURN));
-                                break;
-                            case Type.LONG:
-                                il.add(new InsnNode(Opcodes.LRETURN));
-                                break;
-                            case Type.VOID:
-                                il.add(new InsnNode(Opcodes.RETURN));
-                                break;
-                            default:
-                                il.add(new InsnNode(Opcodes.ARETURN));
-                                break;
-                        }
-
-
-                        methodNode.instructions.add(il);
+                        a.append(RandomStringUtils.random(RandomUtils.nextInt(0, 7))).append("\t");
+                        a.append(RandomStringUtils.random(RandomUtils.nextInt(0, 13))).append("\n");
                     }
+                    StringBuilder b = new StringBuilder();
+                    for (int i = 0; i < 124; i++) {
+                        b.append("[");
+                    }
+                    MethodNode mv = new MethodNode(ASMUtils.ACC_STATIC | ASMUtils.ACC_PRIVATE | ASMUtils.ACC_PUBLIC | ASMUtils.ACC_SYNCHRONIZED | ASMUtils.ACC_FINAL,
+                            a.toString(), "(" + b + "Ljava/lang/String;)V", null, null);
+                    mv.visitCode();
+                    mv.visitFieldInsn(ASMUtils.GETSTATIC, "java/lang/System",
+                            "out", "Ljava/io/PrintStream;");
+                    mv.visitLdcInsn("fart sex");
+                    mv.visitMethodInsn(ASMUtils.INVOKEVIRTUAL, "java/io/PrintStream",
+                            "println", "(Ljava/lang/String;)V", false);
+                    mv.visitInsn(ASMUtils.RETURN);
+                    mv.visitMaxs(3, 3);
+                    mv.visitEnd();
+                    nigger.add(mv);
                 }
-
             });
-            classNode.methods.addAll(betterMethods);
+            classNode.methods.addAll(nigger);
         });
     }
 
-//    private InsnList randomPrintln() {
-//        InsnList instructions = new InsnList();
-//        MethodInsnNode instruction02 = new MethodInsnNode(Opcodes.INVOKEVIRTUAL, "java/io/PrintStream", "println", "(Ljava/lang/String;)V", false);
-//        instructions.add(instruction02);
-//        return instructions;
-//    }
+    private InsnList randomPrintln() {
+        InsnList instructions = new InsnList();
+        MethodInsnNode instruction02 = new MethodInsnNode(Opcodes.INVOKEVIRTUAL, "java/io/PrintStream", "println", "(Ljava/lang/String;)V", false);
+        instructions.add(instruction02);
+        return instructions;
+    }
+
 }

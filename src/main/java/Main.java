@@ -16,13 +16,12 @@ public class Main {
                 .output(Path.of("test", "Aped-IRC.jar"))
 //                .addTransformer(new MathTransformer())
                 .ignored("com", "kotlin", "org")
-//                .addTransformer(new WrapperMethodTransformer())
                 .addTransformer(new ObjectiferTransformer())
                 .addTransformer(new NameTransformer())
                 .addTransformer(new SourceFileTransformer(true))
-
-//                .addTransformer(new ObjectiferTransformer())
-//                .addTransformer(new NameTransformer(true))
+                .addTransformer(new ObjectiferTransformer())
+                .addTransformer(new NameTransformer())
+                .addTransformer(new WrapperMethodTransformer())
                 .build()
                 .start();  // start the apefuscator
 

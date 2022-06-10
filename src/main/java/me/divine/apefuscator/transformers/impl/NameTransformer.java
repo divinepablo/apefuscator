@@ -40,7 +40,7 @@ public class NameTransformer extends Transformer {
                     if (mappings.containsKey(key)) return;
                     if (methodNode.access != Opcodes.ACC_STATIC) {
                         if (!ASMUtils.isMethodFromSuperclass(obfuscator.getClass(classNode.superName), methodNode)) {
-                            mappings.put(key, getName(ThreadLocalRandom.current().nextInt(3, 9)));
+                            mappings.put(key, getName(ThreadLocalRandom.current().nextInt(3, 29)));
                         }
                     }
                 }
@@ -59,12 +59,7 @@ public class NameTransformer extends Transformer {
 
         });
 //        obfuscator.getLogger().info("mappings {}", mappings);
-        Remapper remapper = new MemberRemapper(mappings);/*new Remapper() {
-            @Override
-            public String map(String internalName) {
-                return BetterNameTransformer.this.getName(13);
-            }
-        };*/
+        Remapper remapper = new MemberRemapper(mappings);
         for (Map.Entry<String, ClassNode> entry : obfuscator.classes().entrySet()) {
             if (!obfuscator.getIgnoredList().contains(entry.getValue())) {
                 String a = entry.getKey();
@@ -86,15 +81,15 @@ public class NameTransformer extends Transformer {
 
     private String getName(int length) {
         StringBuilder name = new StringBuilder();
-//        String[] array = { "Abstract", "Client", "Proxy", "Factory",
-//                "Handler", "Singleton", "Builder", "Object", "Bean",
-//                "MXBean", "NetworkHandler", "Instance", "Spring", "Entry",
-//                "Typed", "Controller", "Applet", "Mapping", "Pipeline",
-//                "Closeable", "Openable", "Main"
-//        };
-        String[] array = { "Tear", "Eviate", "Charlie", "Walker",
-                "Tony", "Adams", "Eleven", "Don", "Lane"
+        String[] array = { "Abstract", "Client", "Proxy", "Factory",
+                "Handler", "Singleton", "Builder", "Object", "Bean",
+                "MXBean", "NetworkHandler", "Instance", "Spring", "Entry",
+                "Typed", "Controller", "Applet", "Mapping", "Pipeline",
+                "Closeable", "Openable", "Main"
         };
+//        String[] array = { "Tear", "Eviate", "Charlie", "Walker",
+//                "Tony", "Adams", "Eleven", "Don", "Lane"
+//        };
         for (int i = 0; i < length; i++) {
             name.append(array[ThreadLocalRandom.current().nextInt(array.length)]);
         }
