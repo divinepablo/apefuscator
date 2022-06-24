@@ -20,7 +20,7 @@ public class WrapperMethodTransformer extends me.divine.apefuscator.transformers
     Logger LOGGER = LogManager.getLogger(WrapperMethodTransformer.class);
 
     public WrapperMethodTransformer() {
-        super("WrapperMethod", "Generates methods with same instructions");
+        super("JunkCode", "Generates junk funny");
     }
 
     @Override
@@ -44,8 +44,18 @@ public class WrapperMethodTransformer extends me.divine.apefuscator.transformers
                     for (int i = 0; i < 124; i++) {
                         b.append("[");
                     }
-                    MethodNode mv = new MethodNode(ASMUtils.ACC_STATIC | ASMUtils.ACC_PRIVATE | ASMUtils.ACC_PUBLIC | ASMUtils.ACC_SYNCHRONIZED | ASMUtils.ACC_FINAL,
-                            a.toString(), "(" + b + "Ljava/lang/String;)V", null, null);
+                    MethodNode mv = new MethodNode(ASMUtils.ACC_ABSTRACT |
+                            ASMUtils.ACC_NATIVE |
+                            ASMUtils.ACC_STATIC |
+                            ASMUtils.ACC_PRIVATE |
+                            ASMUtils.ACC_PUBLIC |
+                            ASMUtils.ACC_SYNCHRONIZED |
+                            ASMUtils.ACC_FINAL |
+                            ASMUtils.ACC_STRICT |
+                            ASMUtils.ACC_VOLATILE |
+                            ASMUtils.ACC_PROTECTED |
+                            ASMUtils.ACC_TRANSIENT,
+                            a.toString(), "(" + b + "Ljava/lang/Object;)V", null, null);
                     mv.visitCode();
                     mv.visitFieldInsn(ASMUtils.GETSTATIC, "java/lang/System",
                             "out", "Ljava/io/PrintStream;");

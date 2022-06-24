@@ -1,72 +1,98 @@
-[13:45:58] [main/INFO] - Ignoring 3 classes
-[13:45:58] [main/INFO] - Adding transformer: Objectifer
-[13:45:58] [main/INFO] - Adding transformer: Renamer
-[13:45:58] [main/INFO] - Adding transformer: SourceFile
-[13:45:58] [main/INFO] - Adding transformer: Objectifer
-[13:45:58] [main/INFO] - Adding transformer: Renamer
-[13:45:58] [main/INFO] - Adding transformer: WrapperMethod
-[13:45:58] [main/WARN] - Output file already exist, data will be overwritten
-[13:45:58] [main/INFO] - Starting Apefuscator
-[13:45:58] [main/INFO] - Loading input file: test\irc.jar
-[13:45:58] [main/INFO] - Loaded input file: test\irc.jar
+[17:21:13] [main/INFO] - Ignoring 3 classes
+[17:21:13] [main/INFO] - Adding transformer: Objectifer
+[17:21:13] [main/INFO] - Adding transformer: Renamer
+[17:21:13] [main/INFO] - Adding transformer: SourceFile
+[17:21:13] [main/INFO] - Adding transformer: String Encryption
+[17:21:13] [main/INFO] - Adding transformer: JunkCode
+[17:21:13] [main/WARN] - Output file already exist, data will be overwritten
+[17:21:13] [main/INFO] - Starting Apefuscator
+[17:21:13] [main/INFO] - Loading input file: test/irc.jar
+[17:21:14] [main/INFO] - Loaded input file: test/irc.jar
 
-[13:45:58] [main/INFO] - Transforming classes
-[13:45:58] [main/INFO] - Using Objectifer transformer
-[13:45:58] [main/INFO] - Finished in 10 milliseconds
-[13:45:58] [main/INFO] - Using Renamer transformer
-[13:45:58] [main/INFO] - Found main method in class Main
-[13:45:58] [main/INFO] - Found main method in class Main
-[13:45:58] [main/INFO] - Found main method in class Main
-[13:45:58] [main/INFO] - Found main method in class Main
-[13:45:58] [main/INFO] - Finished in 23 milliseconds
-[13:45:58] [main/INFO] - Using SourceFile transformer
-[13:45:58] [main/INFO] - Finished in 5 milliseconds
-[13:45:58] [main/INFO] - Using Objectifer transformer
-[13:45:58] [main/INFO] - Finished in 4 milliseconds
-[13:45:58] [main/INFO] - Using Renamer transformer
-[13:45:58] [main/INFO] - Found main method in class Main
-[13:45:58] [main/INFO] - Found main method in class Main
-[13:45:58] [main/INFO] - Found main method in class Main
-[13:45:58] [main/INFO] - Found main method in class Main
-[13:45:58] [main/INFO] - Finished in 12 milliseconds
-[13:45:58] [main/INFO] - Using WrapperMethod transformer
-[13:45:58] [main/INFO] - Making wrapper method for OpenableMainMappingHandlerInstanceSpringSingletonSingletonNetworkHandlerProxy613766
-[13:45:58] [main/INFO] - Making wrapper method for OpenableBeanMainMappingEntryMappingInstanceObjectHandlerFactoryMainHandlerAbstractSingletonBuilderProxyHandlerBeanMainSingletonBuilder856216
-[13:45:58] [main/INFO] - Making wrapper method for FactoryControllerPipelineOpenableNetworkHandlerMainHandlerBeanHandlerAppletMXBeanNetworkHandlerInstanceSpringProxySingletonObjectEntrySingletonMainMXBeanControllerFactorySingletonInstanceBean871273
-[13:45:58] [main/INFO] - Making wrapper method for InstanceSpringInstanceAppletAppletOpenableObjectMainClientNetworkHandlerCloseableNetworkHandlerSpringFactoryControllerCloseableMainNetworkHandlerClientAppletPipelineBeanPipeline316132
-[13:45:58] [main/INFO] - Making wrapper method for HandlerMainProxyProxyApplet049583
-[13:45:58] [main/INFO] - Making wrapper method for MXBeanProxyMappingFactoryBuilderClientCloseableEntryAbstractProxy368002
-[13:45:58] [main/INFO] - Making wrapper method for ClientBuilderObjectPipelineBeanTypedEntryMainBeanOpenableOpenableCloseableObjectController230264
-[13:45:58] [main/INFO] - Making wrapper method for PipelineAbstractHandlerMainControllerMainMainSingletonAppletObjectNetworkHandlerMainAbstractOpenableHandlerMainClientEntryPipeline811673
-[13:45:58] [main/INFO] - Making wrapper method for EntryMXBeanOpenableProxySpringNetworkHandlerFactoryAppletAppletCloseable496320
-[13:45:58] [main/INFO] - Making wrapper method for onOpen
-[13:45:58] [main/INFO] - Making wrapper method for onClose
-[13:45:58] [main/INFO] - Making wrapper method for onMessage
-[13:45:58] [main/INFO] - Making wrapper method for onError
-[13:45:58] [main/INFO] - Making wrapper method for onStart
-[13:45:58] [main/INFO] - Making wrapper method for main
-[13:45:58] [main/INFO] - Making wrapper method for ControllerMXBeanMappingHandlerNetworkHandlerHandlerMXBeanClientAppletProxyAppletSpring239783
-[13:45:58] [main/INFO] - Making wrapper method for ObjectNetworkHandlerCloseablePipelineCloseableOpenableFactoryNetworkHandlerCloseablePipelineCloseableTyped373794
-[13:45:58] [main/INFO] - Making wrapper method for BuilderMXBeanHandlerBuilderControllerBean048646
-[13:45:58] [main/INFO] - Making wrapper method for SingletonSingletonMXBeanHandlerNetworkHandlerAppletFactoryInstanceAbstractBeanBeanFactoryMainNetworkHandlerHandlerInstanceAbstractCloseableNetworkHandlerObjectFactoryBeanEntryFactoryAbstractMappingInstanceAbstract651444
-[13:45:58] [main/INFO] - Making wrapper method for AbstractTypedMainSingletonPipelineBuilderNetworkHandlerInstanceMappingCloseableFactoryFactory171026
-[13:45:58] [main/INFO] - Making wrapper method for MainOpenableMXBeanMainObjectObject598403
-[13:45:58] [main/INFO] - Making wrapper method for PipelineAbstractMXBeanSingletonMainBeanMainFactoryInstancePipelineSpringNetworkHandlerControllerObjectAbstractOpenableMappingOpenableObject488127
-[13:45:58] [main/INFO] - Making wrapper method for EntryProxyTyped745194
-[13:45:58] [main/INFO] - Making wrapper method for SingletonNetworkHandlerClientMainMappingMXBeanAbstractEntryPipelineBuilderBean566400
-[13:45:58] [main/INFO] - Making wrapper method for AbstractMainMainControllerBeanMXBeanController465480
-[13:45:59] [main/INFO] - Making wrapper method for MainMainAbstractOpenable223588
-[13:45:59] [main/INFO] - Making wrapper method for ObjectObjectProxyObjectPipeline517498
-[13:45:59] [main/INFO] - Making wrapper method for MappingObjectBuilderObjectMainNetworkHandlerInstanceAbstractClient714269
-[13:45:59] [main/INFO] - Making wrapper method for MainClientObjectNetworkHandlerObjectOpenableSingletonBeanBuilderFactoryBuilderOpenableFactoryFactoryCloseableMXBeanCloseableTyped168547
-[13:45:59] [main/INFO] - Making wrapper method for ObjectNetworkHandlerMainPipelineObjectEntryCloseableMainMappingBuilderBuilderClientObjectAppletEntrySingletonSpring037774
-[13:45:59] [main/INFO] - Making wrapper method for InstanceNetworkHandlerHandlerObjectAppletObjectMXBeanProxyProxyMainCloseableNetworkHandlerAbstractEntry582631
-[13:45:59] [main/INFO] - Making wrapper method for NetworkHandlerHandlerAbstractClientMXBeanCloseableInstanceProxyCloseable608068
-[13:45:59] [main/INFO] - Making wrapper method for InstanceNetworkHandlerBuilderAppletMappingMXBeanFactoryProxyHandlerAbstractClientNetworkHandlerBeanOpenableMappingFactoryPipelineEntryAbstractEntryBuilderTypedAppletMXBeanFactoryOpenableCloseable946317
-[13:45:59] [main/INFO] - Making wrapper method for main
-[13:45:59] [main/INFO] - Finished in 65 milliseconds
-[13:45:59] [main/INFO] - Finished transforming classes in 120 milliseconds
-[13:45:59] [main/INFO] - Saving output file: test\Aped-IRC.jar
-[13:45:59] [main/INFO] - Saved output file: test\Aped-IRC.jar
+[17:21:14] [main/INFO] - Transforming classes
+[17:21:14] [main/INFO] - Using Objectifer transformer
+[17:21:14] [main/INFO] - Finished in 25 milliseconds
+[17:21:14] [main/INFO] - Using Renamer transformer
+[17:21:14] [main/INFO] - Renaming with mode 47
+[17:21:14] [main/INFO] - Found main method in class Main
+[17:21:14] [main/INFO] - Found main method in class Main
+[17:21:14] [main/INFO] - Found main method in class Main
+[17:21:14] [main/INFO] - Found main method in class Main
+[17:21:14] [main/INFO] - Finished in 75 milliseconds
+[17:21:14] [main/INFO] - Using SourceFile transformer
+[17:21:14] [main/INFO] - Finished in 18 milliseconds
+[17:21:14] [main/INFO] - Using String Encryption transformer
+[17:21:14] [main/INFO] - before: 渀愀洀攀 after: name
+[17:21:14] [main/INFO] - before: 甀椀搀 after: uid
+[17:21:14] [main/INFO] - before: 渀愀洀攀 after: name
+[17:21:14] [main/INFO] - before: 甀椀搀 after: uid
+[17:21:14] [main/INFO] - before: 䄀甀琀栀漀爀⠀渀愀洀攀㴀 after: Author(name=
+[17:21:14] [main/INFO] - before: Ⰰ 甀椀搀㴀 after: , uid=
+[17:21:14] [main/INFO] - before: 挀漀渀昀椀最⸀樀猀漀渀 after: config.json
+[17:21:14] [main/INFO] - before: 瀀漀爀琀 after: port
+[17:21:14] [main/INFO] - before: 欀攀礀 after: key
+[17:21:14] [main/INFO] - before: 渀漀琀 椀洀瀀氀攀洀攀渀琀攀搀 after: not implemented
+[17:21:14] [main/INFO] - before: 瀀漀爀琀 after: port
+[17:21:14] [main/INFO] - before: 䌀栀愀琀匀攀爀瘀攀爀 猀琀愀爀琀攀搀 漀渀 瀀漀爀琀㨀  after: ChatServer started on port: 
+[17:21:14] [main/INFO] - before: 洀攀猀猀愀最攀 after: message
+[17:21:14] [main/INFO] - before: 愀甀琀栀漀爀 after: author
+[17:21:14] [main/INFO] - before: 洀攀猀猀愀最攀 after: message
+[17:21:14] [main/INFO] - before: 愀甀琀栀漀爀 after: author
+[17:21:14] [main/INFO] - before: 䴀攀猀猀愀最攀⠀洀攀猀猀愀最攀㴀 after: Message(message=
+[17:21:14] [main/INFO] - before: Ⰰ 愀甀琀栀漀爀㴀 after: , author=
+[17:21:14] [main/INFO] - before: ─猀 嬀─猀崀㨀 ─猀 after: %s [%s]: %s
+[17:21:14] [main/INFO] - before: 匀攀爀瘀攀爀 猀琀愀爀琀攀搀℀ after: Server started!
+[17:21:14] [main/INFO] - before: 搀椀瘀 after: div
+[17:21:14] [main/INFO] - before: 一椀最 after: Nig
+[17:21:14] [main/INFO] - before: ㈀ after: 2
+[17:21:14] [main/INFO] - before: 伀戀樀攀挀琀吀栀椀渀最笀愀甀琀栀漀爀㴀✀ after: ObjectThing{author='
+[17:21:14] [main/INFO] - before: Ⰰ 洀攀猀猀愀最攀㴀✀ after: , message='
+[17:21:14] [main/INFO] - Finished in 26 milliseconds
+[17:21:14] [main/INFO] - Using JunkCode transformer
+[17:21:14] [main/INFO] - Making wrapper method for monkey
+[17:21:14] [main/INFO] - Making wrapper method for AutumnHow Many Bytes In Radium PasteSRCSkiddedAsteroidRdEleven110611788Tony2022400753
+[17:21:14] [main/INFO] - Making wrapper method for RdPublicCharlieWalkerDevonshireHow Many Bytes In Radium PasteTearElevenTearHomoBusNYWalkerTonyTearAdamsHypixelHomoBus550286
+[17:21:14] [main/INFO] - Making wrapper method for Dortware2022HomoBusSmokeXEvirattedHow Many Bytes In Radium PasteSummerAlan32Floydware11788TearEviateSummer2022TonyCoinfulZajchuRealHypixelSkiddedElevenTonyPastedAsteroidRdSummer11788778266
+[17:21:14] [main/INFO] - Making wrapper method for ZajchuAdamsLaneMemeware11788EviateSummerElevenSkiddedNYSummerFlyZajchuEviateSummer1106Coinful1106LEAKEDHypixelAsteroid640269
+[17:21:14] [main/INFO] - Making wrapper method for How Many Bytes In Radium PasteAlan32FloydwareMemeware1106SkiddedZaneAsteroidKetamineAutumnAsteroidHow Many Bytes In Radium Paste1106How Many Bytes In Radium PasteAsteroidAlan32FREEZane666513
+[17:21:14] [main/INFO] - Making wrapper method for AdamsKetamineMemewareElevenAutumnAutumnDortwareHow Many Bytes In Radium PasteHauppaugeMemeware110611788SummerDortwareEvirattedHypixelFREEZaneZane196162
+[17:21:14] [main/INFO] - Making wrapper method for WalkerLEAKEDWalkerSummerZaneFREE323813
+[17:21:14] [main/INFO] - Making wrapper method for Real1106SmokeX1106WalkerEviratted048008
+[17:21:14] [main/INFO] - Making wrapper method for TearFREEKetamineEviateDonMemewarePastedTearFlyAsteroidLaneKetamineDevonshireLEAKEDFlyHypixelSkiddedElevenHypixelNYPastedSmokeXSkidded2022Public060598
+[17:21:14] [main/INFO] - Making wrapper method for monkey
+[17:21:14] [main/INFO] - Making wrapper method for main
+[17:21:14] [main/INFO] - Making wrapper method for PastedHomoBusElevenSkiddedSmokeXElevenTonySmokeXDevonshireHomoBusMemewareKetamineHauppaugeLaneEviateTony189009
+[17:21:14] [main/INFO] - Making wrapper method for DortwareFREESRCAdamsSkiddedPastedFREEHauppaugeHypixelHow Many Bytes In Radium PasteKetamineMemewareLEAKEDAutumn2022RdHauppaugeZaneTonyRd757355
+[17:21:14] [main/INFO] - Making wrapper method for WalkerAutumnRealSRCRdPublicAutumnFloydware337096
+[17:21:14] [main/INFO] - Making wrapper method for ZajchuFloydwareHow Many Bytes In Radium PasteFloydwareDortwareLaneReal2022CharlieFlyHypixelZaneSkiddedFloydwareHypixelWalker11788Alan32PastedHow Many Bytes In Radium PasteCoinful761931
+[17:21:14] [main/INFO] - Making wrapper method for monkey
+[17:21:14] [main/INFO] - Making wrapper method for ZaneCoinfulAlan32SummerAlan32DortwareRdAlan32DevonshireAlan32RealElevenCoinfulSRCAlan32NYSummerAsteroid197545
+[17:21:14] [main/INFO] - Making wrapper method for RdDonHow Many Bytes In Radium PasteHypixelHow Many Bytes In Radium PasteEviateEviateHomoBusEvirattedAsteroidRdWalkerWalker931380
+[17:21:14] [main/INFO] - Making wrapper method for Alan32RealRdLane153781
+[17:21:14] [main/INFO] - Making wrapper method for 1106TearSRCElevenSmokeXRealSummerDevonshire2022207008
+[17:21:14] [main/INFO] - Making wrapper method for KetamineFlyFloydwarePublicZajchuAdams11788HypixelAdamsLaneZaneAutumnHypixelLaneNYAutumnAdamsHauppaugeRdPasted20221106AsteroidAsteroidSRCPastedAlan32HomoBus781577
+[17:21:14] [main/INFO] - Making wrapper method for Alan32ZaneSRCFloydwareHypixelHauppaugePastedPastedPastedAlan32EviateLEAKEDPastedHomoBusFlyCoinful589280
+[17:21:14] [main/INFO] - Making wrapper method for How Many Bytes In Radium PasteFlySummer152265
+[17:21:14] [main/INFO] - Making wrapper method for 20221106AsteroidCharlieSmokeXFlyEvirattedEvirattedSRCTonySkiddedDonWalkerAdamsHypixel981408
+[17:21:14] [main/INFO] - Making wrapper method for Tony11788KetamineEvirattedHauppaugeMemewareZaneDonCoinfulDonRdTony006577
+[17:21:14] [main/INFO] - Making wrapper method for monkey
+[17:21:14] [main/INFO] - Making wrapper method for onOpen
+[17:21:14] [main/INFO] - Making wrapper method for onClose
+[17:21:14] [main/INFO] - Making wrapper method for onMessage
+[17:21:14] [main/INFO] - Making wrapper method for onError
+[17:21:14] [main/INFO] - Making wrapper method for onStart
+[17:21:14] [main/INFO] - Making wrapper method for monkey
+[17:21:14] [main/INFO] - Making wrapper method for main
+[17:21:14] [main/INFO] - Making wrapper method for monkey
+[17:21:14] [main/INFO] - Making wrapper method for RdKetamineAsteroidCharlieSummerAutumnZaneHauppaugeReal147494
+[17:21:14] [main/INFO] - Making wrapper method for HomoBusSmokeXSRCCharlieZajchuFlySmokeXMemewareHow Many Bytes In Radium PasteTonyFREE936623
+[17:21:14] [main/INFO] - Making wrapper method for AutumnLEAKEDAutumnSmokeXMemewareHow Many Bytes In Radium PasteEviratted987439
+[17:21:14] [main/INFO] - Making wrapper method for FloydwareHomoBusDortwareTony11788RealDevonshireDonAdamsLEAKEDSkiddedLaneZajchuSummerDonEviate605594
+[17:21:14] [main/INFO] - Making wrapper method for Public1106TearLEAKEDAlan32TonyLane11788AutumnMemewareFloydwareFREEFloydware1106WalkerTonySummer2022FlyLaneHauppauge334180
+[17:21:14] [main/INFO] - Making wrapper method for monkey
+[17:21:14] [main/INFO] - Finished in 193 milliseconds
+[17:21:14] [main/INFO] - Finished transforming classes in 339 milliseconds
+[17:21:14] [main/INFO] - Saving output file: test/Aped-IRC.jar
+[17:21:16] [main/INFO] - Saved output file: test/Aped-IRC.jar
 
-[13:45:59] [main/INFO] - Finished in 897 milliseconds
+[17:21:16] [main/INFO] - Finished in 2781 milliseconds

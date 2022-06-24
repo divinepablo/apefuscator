@@ -5,6 +5,8 @@ import me.divine.apefuscator.transformers.Transformer;
 import me.divine.apefuscator.utils.ASMUtils;
 import me.divine.apefuscator.utils.MemberRemapper;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.commons.ClassRemapper;
 import org.objectweb.asm.commons.Remapper;
@@ -18,14 +20,23 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class NameTransformer extends Transformer {
     private final HashMap<String, String> mappings = new HashMap<>();
+    private final Logger LOGGER = LogManager.getLogger();
+    private int namingMode = ENTERPRISE;
+    public static final int ENTERPRISE = 46;
+    public static final int TROLL = 47;
 
     public NameTransformer() {
         super("Renamer", "great");
     }
 
+    public NameTransformer(int namingMode) {
+        this();
+        this.namingMode = namingMode;
+    }
+
     @Override
     public void transform(Apefuscator obfuscator) {
-
+        obfuscator.getLogger().info("Renaming with mode {}", namingMode);
         obfuscator.getClasses().forEach(classNode -> {
             AtomicBoolean h = new AtomicBoolean(false);
             classNode.methods.forEach(methodNode -> {
@@ -46,15 +57,15 @@ public class NameTransformer extends Transformer {
                 }
             });
             classNode.fields.forEach(fieldNode -> {
-                    String key = String.format("%s.%s%s", classNode.name, fieldNode.name, fieldNode.desc);
-                    if (mappings.containsKey(key)) return;
-                    if (fieldNode.access != Opcodes.ACC_STATIC) {
-                        mappings.put(key, getName(30));
-                    }
+                String key = String.format("%s.%s%s", classNode.name, fieldNode.name, fieldNode.desc);
+                if (mappings.containsKey(key)) return;
+                if (fieldNode.access != Opcodes.ACC_STATIC) {
+                    mappings.put(key, getName(30));
+                }
 
             });
             if (!h.get()) {
-                mappings.put(classNode.name, getName(15));
+                mappings.put(classNode.name, "enterprise/" + getName(40));
             }
 
         });
@@ -81,12 +92,7 @@ public class NameTransformer extends Transformer {
 
     private String getName(int length) {
         StringBuilder name = new StringBuilder();
-        String[] array = { "Abstract", "Client", "Proxy", "Factory",
-                "Handler", "Singleton", "Builder", "Object", "Bean",
-                "MXBean", "NetworkHandler", "Instance", "Spring", "Entry",
-                "Typed", "Controller", "Applet", "Mapping", "Pipeline",
-                "Closeable", "Openable", "Main"
-        };
+        String[] array = getWords();
 //        String[] array = { "Tear", "Eviate", "Charlie", "Walker",
 //                "Tony", "Adams", "Eleven", "Don", "Lane"
 //        };
@@ -96,4 +102,31 @@ public class NameTransformer extends Transformer {
         name.append(RandomStringUtils.randomNumeric(6));
         return name.toString();
     }
+
+
+    public String[] getWords() {
+        String[] words;
+        switch (namingMode) {
+
+            case TROLL:
+                words = new String[]{"Tear", "Eviate", "Charlie", "Walker",
+                        "Tony", "Adams", "Eleven", "Don", "Lane",
+                        "Coinful", "Asteroid", "SmokeX", "Autumn", "Summer", "Alan32", "Real", "Hypixel", "Fly", "2022", "LEAKED", "Public",
+                        "Zajchu", "Eviratted", "Dortware", "Memeware", "Floydware",
+                        "SRC", "FREE", "Skidded", "Pasted", "How Many Bytes In Radium Paste", "Ketamine", "Zane", "HomoBus", "1106", "Devonshire", "Rd", "Hauppauge", "NY", "11788"};
+                break;
+            case ENTERPRISE:
+                words = new String[]{"Abstract", "Client", "Proxy", "Factory",
+                        "Handler", "Singleton", "Builder", "Object", "Bean",
+                        "MXBean", "NetworkHandler", "Instance", "Spring", "Entry",
+                        "Typed", "Controller", "Applet", "Mapping", "Pipeline",
+                        "Closeable", "Openable", "Main"};
+                break;
+            default:
+                words =  new String[]{"a", "b", "c"};
+                break;
+        }
+        return words;
+    }
+
 }

@@ -17,13 +17,17 @@ public class Main {
 //                .addTransformer(new MathTransformer())
                 .ignored("com", "kotlin", "org")
                 .addTransformer(new ObjectiferTransformer())
-                .addTransformer(new NameTransformer())
+                .addTransformer(new DortCodeObfuscation())
+                .addTransformer(new NameTransformer(NameTransformer.TROLL))
                 .addTransformer(new SourceFileTransformer(true))
-                .addTransformer(new ObjectiferTransformer())
-                .addTransformer(new NameTransformer())
+                .addTransformer(new StringEncryptionTransformer())
                 .addTransformer(new WrapperMethodTransformer())
                 .build()
                 .start();  // start the apefuscator
 
+    }
+
+    public void monk(Apefuscator apefuscator) {
+        System.out.println(apefuscator);
     }
 }

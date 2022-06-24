@@ -1,1 +1,11 @@
 /target/
+/.idea/
+/.attach_pid19121
+/Archive.zip
+/irc.jar
+/Main.java
+/Main.class
+/mappings.json
+/mappings.txt
+/mappings2.txt
+/deobfuscator.log

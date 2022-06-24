@@ -27,6 +27,7 @@ public class InvokeDynamicTransformer extends me.divine.apefuscator.transformers
                         MethodInsnNode methodInsnNode = ((MethodInsnNode) instruction);
                         if (methodInsnNode.owner.startsWith("java/") && (methodInsnNode.getOpcode() & Opcodes.ACC_STATIC) != 0) {
                             InvokeDynamicInsnNode invokeDynamic = new InvokeDynamicInsnNode(methodInsnNode.name, methodInsnNode.desc, new Handle(Opcodes.H_INVOKESTATIC, methodInsnNode.owner, methodInsnNode.name, methodInsnNode.desc, false));
+                            methodNode.instructions.insertBefore(methodInsnNode, invokeDynamic);
                         }
                     }
 
