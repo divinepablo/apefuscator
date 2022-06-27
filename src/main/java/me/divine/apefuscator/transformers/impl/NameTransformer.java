@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.commons.ClassRemapper;
 import org.objectweb.asm.commons.Remapper;
+import org.objectweb.asm.commons.SimpleRemapper;
 import org.objectweb.asm.tree.ClassNode;
 
 import java.util.HashMap;
@@ -51,7 +52,7 @@ public class NameTransformer extends Transformer {
                     if (mappings.containsKey(key)) return;
                     if (methodNode.access != Opcodes.ACC_STATIC) {
                         if (!ASMUtils.isMethodFromSuperclass(obfuscator.getClass(classNode.superName), methodNode)) {
-                            mappings.put(key, getName(ThreadLocalRandom.current().nextInt(3, 29)));
+                            mappings.put(key, getName(15));
                         }
                     }
                 }
@@ -65,27 +66,34 @@ public class NameTransformer extends Transformer {
 
             });
             if (!h.get()) {
-                mappings.put(classNode.name, "enterprise/" + getName(40));
+                String name = (namingMode == 47 ? "tear/x/eviate/hypixel/bypass/extraordinary/" : "enterprise/") + getName(40);
+                mappings.put(classNode.name, name);
+                obfuscator.getLogger().info("{}:{}", classNode.name, name);
             }
 
         });
+
 //        obfuscator.getLogger().info("mappings {}", mappings);
         Remapper remapper = new MemberRemapper(mappings);
-        for (Map.Entry<String, ClassNode> entry : obfuscator.classes().entrySet()) {
-            if (!obfuscator.getIgnoredList().contains(entry.getValue())) {
-                String a = entry.getKey();
-                ClassNode b = entry.getValue();
-                obfuscator.getClassMap().remove(a);
-                ClassNode copy = new ClassNode();
-                b.accept(new ClassRemapper(copy, remapper));
-                for (int i = 0; i < copy.methods.size(); i++) {
-                    b.methods.set(i, copy.methods.get(i));
-                }
-                for (int i = 0; i < copy.fields.size(); i++) {
-                    b.fields.set(i, copy.fields.get(i));
-                }
+        for (Map.Entry<String, ClassNode> entry : obfuscator.allClasses().entrySet()) {
+            try {
+                if (!obfuscator.getIgnoredList().contains(entry.getValue())) {
+                    String a = entry.getKey();
+                    ClassNode b = entry.getValue();
+                    obfuscator.getClassMap().remove(a);
+                    ClassNode copy = new ClassNode();
+                    b.accept(new ClassRemapper(copy, remapper));
+                    for (int i = 0; i < copy.methods.size(); i++) {
+                        b.methods.set(i, copy.methods.get(i));
+                    }
+                    for (int i = 0; i < copy.fields.size(); i++) {
+                        b.fields.set(i, copy.fields.get(i));
+                    }
 //                obfuscator.getLogger().info("{} class", copy.name);
-                obfuscator.getClassMap().put(copy.name, copy);
+                    obfuscator.getClassMap().put(copy.name, copy);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
@@ -109,11 +117,16 @@ public class NameTransformer extends Transformer {
         switch (namingMode) {
 
             case TROLL:
-                words = new String[]{"Tear", "Eviate", "Charlie", "Walker",
+                words = new String[]{
+                        "Tear", "Eviate", "Charlie", "Walker",
                         "Tony", "Adams", "Eleven", "Don", "Lane",
-                        "Coinful", "Asteroid", "SmokeX", "Autumn", "Summer", "Alan32", "Real", "Hypixel", "Fly", "2022", "LEAKED", "Public",
-                        "Zajchu", "Eviratted", "Dortware", "Memeware", "Floydware",
-                        "SRC", "FREE", "Skidded", "Pasted", "How Many Bytes In Radium Paste", "Ketamine", "Zane", "HomoBus", "1106", "Devonshire", "Rd", "Hauppauge", "NY", "11788"};
+                        "SuwonHighschool", "Asteroid", "SmokeX", "Autumn", "Summer", "Alan32", "Real",
+                        "Hypixel", "Fly", "2022", "LEAKED", "Public", "Rise", "Felix", "Gravity", "Raybo",
+                        "Zajchu", "Eviratted", "Dortware", "Memeware", "Floydware", "Pandaware",
+                        "SRC", "FREE", "Skidded", "Pasted", "HowManyBytesInRadiumPaste", "Ketamine", "Zane",
+                        "HomoBus", "1106", "Devonshire", "Rd", "Hauppauge", "NY", "11788", "Jinthium",
+                        "Roy", "Hwang"
+                };
                 break;
             case ENTERPRISE:
                 words = new String[]{"Abstract", "Client", "Proxy", "Factory",
@@ -123,7 +136,7 @@ public class NameTransformer extends Transformer {
                         "Closeable", "Openable", "Main"};
                 break;
             default:
-                words =  new String[]{"a", "b", "c"};
+                words = new String[]{"a", "b", "c"};
                 break;
         }
         return words;

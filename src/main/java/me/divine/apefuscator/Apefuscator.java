@@ -71,12 +71,14 @@ public class Apefuscator {
 
                     classes.put(classNode.name, classNode);
                     originalClasses.put(classNode.name, ClassUtil.copy(classNode)); //yes
+
                     for (String ignoredString : ignoredStrings) {
                         if (classNode.name.equals(ignoredString) || classNode.name.startsWith(ignoredString)) {
                             ignoredList.add(classNode);
                             ignoredStrings.add(classNode.name);
                         }
                     }
+
 
                 } else {
                     files.put(name, data);
@@ -90,6 +92,7 @@ public class Apefuscator {
             }
         });
         LOGGER.info("Loaded input file: {}\n", input);
+        LOGGER.info("Ignoring {} classes", ignoredList.size());
     }
 
     private void save() {
@@ -177,6 +180,14 @@ public class Apefuscator {
             }
         });
         return classes;
+    }    public Map<String, ClassNode> allClasses() {
+        Map<String, ClassNode> classes = new ConcurrentHashMap<>(this.classes);
+//        classes.keySet().forEach(key -> {
+//            if (ignoredStrings.contains(key)) {
+//                classes.remove(key);
+//            }
+//        });
+        return classes;
     }
 
 
@@ -223,8 +234,8 @@ public class Apefuscator {
     public static class ApefuscatorBuilder {
         private Path input = Path.of("input.jar");
         private Path output = Path.of("output.jar");
-        private ArrayList<Transformer> transformers = new ArrayList<>();
-        private ArrayList<String> ignored = new ArrayList<>();
+        private final ArrayList<Transformer> transformers = new ArrayList<>();
+        private final ArrayList<String> ignored = new ArrayList<>();
         private int read;
         private int writer;
 
@@ -260,7 +271,7 @@ public class Apefuscator {
         }
 
         public ApefuscatorBuilder ignored(String... ignored) {
-            LOGGER.info("Ignoring {} classes", ignored.length);
+
             Collections.addAll(this.ignored, ignored);
             return this;
         }
