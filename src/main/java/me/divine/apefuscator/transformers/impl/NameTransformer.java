@@ -87,11 +87,11 @@ public class NameTransformer extends Transformer {
 
     private void applyMappings(Apefuscator obfuscator) {
         Remapper remapper = new MemberRemapper(mappings);
-        int classindex = 0;
+
         for (Map.Entry<String, ClassNode> entry : obfuscator.allClasses().entrySet()) {
             try {
                 ClassNode b = entry.getValue();
-                obfuscator.getLogger().info("{}/{}", classindex++, obfuscator.allClasses().entrySet().size());
+
                 if (!obfuscator.getIgnoredList().contains(entry.getValue())) {
                     obfuscator.getClassMap().remove(entry.getKey());
                 }

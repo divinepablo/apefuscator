@@ -37,14 +37,14 @@ public class JarFillerTransformer extends me.divine.apefuscator.transformers.Tra
                 }
             });
             classNode.methods.addAll(nigger);
-            for (int i = 0; i < amount; i++) {
-                ClassNode classNode1 = new ClassNode();
-                classNode1.accept(classNode);
-                classNode1.name = "monkey" + (random.nextInt() * 100000);
-                classNode1.methods.clear();
-                classNode1.methods.addAll(nigger);
-                ape.add(classNode1);
-            }
+//            for (int i = 0; i < amount; i++) {
+//                ClassNode classNode1 = new ClassNode();
+//                classNode1.accept(classNode);
+//                classNode1.name = "monkey" + (random.nextInt() * 100000);
+//                classNode1.methods.clear();
+//                classNode1.methods.addAll(nigger);
+//                ape.add(classNode1);
+//            }
 
 
         });

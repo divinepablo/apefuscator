@@ -1,9 +1,13 @@
 package me.divine.apefuscator.transformers;
 
 import me.divine.apefuscator.Apefuscator;
+import me.divine.apefuscator.transformers.impl.ObjectiferTransformer;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public abstract class Transformer {
     public abstract void transform(Apefuscator obfuscator);
+    protected Logger LOGGER = LogManager.getLogger(Transformer.class);
     private final String name;
     private final String description;
 
