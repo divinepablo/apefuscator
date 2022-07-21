@@ -11,14 +11,19 @@ public class Main {
         Apefuscator.builder()
                 .readerFlag(ClassReader.SKIP_FRAMES)
                 .writerFlag(0)
-                .input(Path.of("test", "Sleek.jar"))
-                .output(Path.of("test", "Aped-Sleek.jar"))
-                .ignored("com", "kotlin", "org", "fr", "net/minecraft/client/main", "javassist", "shadersmod", "de", "javax", "paulscode", "joptsimple", "net/minecraft/server/management")
-//
 //                .addTransformer(new NameTransformer(NameTransformer.TROLL))
-                .addTransformer(new WrapperMethodTransformer())
-                .addTransformer(new WrapperMethodTransformer())
-
+                //.addTransformer(new WrapperMethodTransformer())
+                .readerFlag(ClassReader.EXPAND_FRAMES)
+                .writerFlag(ClassWriter.COMPUTE_MAXS)
+//                .input(Path.of("test", "input", "elloWorld.jar"))
+                .input(Path.of("test", "VinceBase.jar"))
+                .output(Path.of("test", "Aped-VinceBase.jar"))
+//                .addTransformer(new MathTransformer())
+                .ignored("com", "kotlin", "org", "fr", "net/minecraft/client/main", "javassist", "shadersmod", "javax","jcm","best/azura")
+//                .addTransformer(new ObjectiferTransformer())
+//                .addTransformer(new DortCodeObfuscation())
+                .addTransformer(new NameTransformer(NameTransformer.TROLL))
+                .addTransformer(new SourceFileTransformer(true))
                 .build()
                 .start();  // start the apefuscator
 
