@@ -29,6 +29,8 @@ public class Apefuscator {
     private final Path output;
     private final ArrayList<Transformer> transformers = new ArrayList<>();
     private final CopyOnWriteArrayList<String> ignoredStrings = new CopyOnWriteArrayList<>();
+    private final CopyOnWriteArrayList<String> onlyIncluded = new CopyOnWriteArrayList<>();
+    private boolean onlyIncluding;
     private final CopyOnWriteArrayList<ClassNode> ignoredList = new CopyOnWriteArrayList<>();
     private final int readerMode;
     private final int writerMode;
@@ -54,6 +56,8 @@ public class Apefuscator {
         this.ignoredStrings.addAll(builder.ignored);
         this.readerMode = builder.read;
         this.writerMode = builder.writer;
+        this.onlyIncluding = builder.onlyIncluding;
+        this.onlyIncluded.addAll(builder.onlyIncluded);
 
         System.out.println();
     }
@@ -73,6 +77,14 @@ public class Apefuscator {
                     classes.put(classNode.name, classNode);
                     originalClasses.put(classNode.name, ClassUtil.copy(classNode)); //yes
 
+                    if (onlyIncluding) {
+                        for (String ignoredString : onlyIncluded) {
+                            if (!classNode.name.startsWith(ignoredString)|| !classNode.name.equals(ignoredString)) {
+                                ignoredList.add(classNode);
+                                ignoredStrings.add(classNode.name);
+                            }
+                        }
+                    }
                     for (String ignoredString : ignoredStrings) {
                         if (classNode.name.equals(ignoredString) || classNode.name.startsWith(ignoredString)) {
                             ignoredList.add(classNode);
@@ -93,7 +105,7 @@ public class Apefuscator {
             }
         });
         LOGGER.info("Loaded input file: {}\n", input);
-        LOGGER.info("Ignoring {} classes", ignoredList.size());
+        LOGGER.info("Ignoring {}/{} classes", ignoredList.size(), classes.size());
     }
 
     private void save() {
@@ -159,7 +171,7 @@ public class Apefuscator {
         transform();
         save();
         long diff = System.currentTimeMillis() - beforebeforebefore;
-        LOGGER.info("Finished in {} milliseconds, ({} hours | {} minutes | {} seconds", diff, TimeUnit.MILLISECONDS.toHours(diff), TimeUnit.MILLISECONDS.toMinutes(diff), TimeUnit.MILLISECONDS.toSeconds(diff));
+        LOGGER.info("Finished in {} milliseconds, ({} hours | {} minutes | {} seconds)", diff, TimeUnit.MILLISECONDS.toHours(diff), TimeUnit.MILLISECONDS.toMinutes(diff), TimeUnit.MILLISECONDS.toSeconds(diff));
     }
 
     private void transform() {
@@ -183,13 +195,12 @@ public class Apefuscator {
         });
         return classes;
     }    public Map<String, ClassNode> allClasses() {
-        Map<String, ClassNode> classes = new ConcurrentHashMap<>(this.classes);
-//        classes.keySet().forEach(key -> {
+        //        classes.keySet().forEach(key -> {
 //            if (ignoredStrings.contains(key)) {
 //                classes.remove(key);
 //            }
 //        });
-        return classes;
+        return new ConcurrentHashMap<>(this.classes);
     }
 
 
@@ -238,8 +249,11 @@ public class Apefuscator {
         private Path output = Path.of("output.jar");
         private final ArrayList<Transformer> transformers = new ArrayList<>();
         private final ArrayList<String> ignored = new ArrayList<>();
+        private final ArrayList<String> onlyIncluded = new ArrayList<>();
         private int read;
         private int writer;
+        private boolean onlyIncluding;
+
 
         public ApefuscatorBuilder input(Path input) {
             this.input = input;
@@ -275,6 +289,12 @@ public class Apefuscator {
         public ApefuscatorBuilder ignored(String... ignored) {
 
             Collections.addAll(this.ignored, ignored);
+            return this;
+        }
+        public ApefuscatorBuilder onlyInclude(String... ignored) {
+
+            Collections.addAll(this.onlyIncluded, ignored);
+            this.onlyIncluding = true;
             return this;
         }
 
