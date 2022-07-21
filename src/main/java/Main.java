@@ -14,7 +14,6 @@ public class Main {
                 .input(Path.of("test", "irc.jar"))
                 .output(Path.of("test", "Aped-IRC.jar"))
                 .ignored("com", "kotlin", "org", "fr", "net/minecraft/client/main", "javassist", "shadersmod", "javax","de/jcm","best/azura")
-                .addTransformer(new JarFillerTransformer(100))
                 .addTransformer(new NameTransformer(NameTransformer.TROLL))
                 .addTransformer(new SourceFileTransformer(true))
                 .build()
