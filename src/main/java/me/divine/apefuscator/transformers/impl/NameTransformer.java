@@ -74,8 +74,6 @@ public class NameTransformer extends Transformer {
                 }
                 mappings.put(classNode.name, name);
             }
-
-
         });
 
 //        obfuscator.getLogger().info("mappings {}", mappings);
@@ -143,12 +141,16 @@ public class NameTransformer extends Transformer {
                 words = new String[]{
                         "Tear", "Eviate", "Charlie", "Walker",
                         "Tony", "Adams", "Eleven", "Don", "Lane",
-                        "SuwonHighschool", "Asteroid", "SmokeX", "Autumn", "Summer", "Alan32", "Real",
-                        "Hypixel", "Fly", "2022", "LEAKED", "Public", "Rise", "Felix", "Gravity", "Raybo",
+                        "SuwonHighschool", "Asteroid", "SmokeX", "Autumn", "Summer", "Alan", "Real",
+                        "Hypixel", "Fly", "LEAKED", "Public", "Rise", "Felix", "Gravity", "Raybo",
                         "Zajchu", "Eviratted", "Dortware", "Memeware", "Floydware", "Pandaware",
                         "SRC", "FREE", "Skidded", "Pasted", "HowManyBytesInRadiumPaste", "Ketamine", "Zane",
-                        "HomoBus", "1106", "Devonshire", "Rd", "Hauppauge", "NY", "11788", "Jinthium", "Haram",
-                        "Halal", "Allah", "Final", "Roy", "Hwang"
+                        "HomoBus", "Devonshire", "Rd", "Hauppauge", "NY", "Jinthium", "Haram",
+                        "Halal", "Allah", "Final", "Roy", "Hwang", "HomoBus", "Devonshire", "Rd",
+                        "Hauppauge", "NY", "Jinthium", "Roy", "Hwang","BeanDog","PowredByNefariousIntent"
+                        ,"YouJustGotHashTagEviRatted", "DiabloGatoSexo","IForgotHowToCode","IntentStoreRCE",
+                        "IfYouAreReadingThisYouAreAlreadyRatted", "VincentDiablo","ImNotObfuscated","RatLoader",
+                        "RobertLopresti","LoprestiWare"
                 };
                 break;
             case ENTERPRISE:

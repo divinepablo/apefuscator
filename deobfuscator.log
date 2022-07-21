@@ -1,10 +1,20 @@
-[09:47:25] [main/INFO] - Adding transformer: JunkCode
-[09:47:25] [main/INFO] - Adding transformer: JunkCode
-[09:47:25] [main/WARN] - Output file already exist, data will be overwritten
-[09:47:25] [main/INFO] - Starting Apefuscator
-[09:47:25] [main/INFO] - Loading input file: test\Sleek.jar
-[09:47:31] [main/INFO] - Loaded input file: test\Sleek.jar
+[10:25:54] [main/INFO] - Adding transformer: Renamer
+[10:25:54] [main/INFO] - Adding transformer: SourceFile
+[10:25:54] [main/WARN] - Output file already exist, data will be overwritten
+[10:25:54] [main/INFO] - Starting Apefuscator
+[10:25:54] [main/INFO] - Loading input file: test\VinceBase.jar
+[10:25:55] [main/INFO] - Loaded input file: test\VinceBase.jar
 
-[09:47:31] [main/INFO] - Ignoring 9711 classes
-[09:47:31] [main/INFO] - Transforming classes
-[09:47:31] [main/INFO] - Using JunkCode transformer
+[10:25:55] [main/INFO] - Ignoring 95 classes
+[10:25:55] [main/INFO] - Transforming classes
+[10:25:55] [main/INFO] - Using Renamer transformer
+[10:25:55] [main/INFO] - Renaming with mode 47
+[10:25:55] [main/INFO] - Found main method in class Start
+[10:26:00] [main/INFO] - Finished in 5537 milliseconds
+[10:26:00] [main/INFO] - Using SourceFile transformer
+[10:26:00] [main/INFO] - Finished in 4 milliseconds
+[10:26:00] [main/INFO] - Finished transforming classes in 5543 milliseconds
+[10:26:00] [main/INFO] - Saving output file: test\Aped-VinceBase.jar
+[10:26:05] [main/INFO] - Saved output file: test\Aped-VinceBase.jar
+
+[10:26:05] [main/INFO] - Finished in 11472 milliseconds, (0 hours | 0 minutes | 11 seconds
