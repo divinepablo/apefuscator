@@ -10,14 +10,16 @@ import org.apache.logging.log4j.Logger;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.commons.ClassRemapper;
 import org.objectweb.asm.commons.Remapper;
-import org.objectweb.asm.commons.SimpleRemapper;
 import org.objectweb.asm.tree.ClassNode;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class NameTransformer extends Transformer {
     private final HashMap<String, String> mappings = new HashMap<>();
@@ -66,10 +68,13 @@ public class NameTransformer extends Transformer {
 
             });
             if (!h.get()) {
-                String name = (namingMode == 47 ? "tear/x/eviate/hypixel/bypass/extraordinary/" : "enterprise/") + getName(40);
+                String name = (namingMode == 47 ? "tear/x/eviate/hypixel/bypass/extraordinaire/" : "enterprise/") + getName(ThreadLocalRandom.current().nextInt(40, 100));
+                if (mappings.containsValue(name)) {
+                    name += getName(ThreadLocalRandom.current().nextInt(40, 100));
+                }
                 mappings.put(classNode.name, name);
-                obfuscator.getLogger().info("{}:{}", classNode.name, name);
             }
+
 
         });
 
@@ -77,10 +82,12 @@ public class NameTransformer extends Transformer {
         Remapper remapper = new MemberRemapper(mappings);
         for (Map.Entry<String, ClassNode> entry : obfuscator.allClasses().entrySet()) {
             try {
+                ClassNode b = entry.getValue();
                 if (!obfuscator.getIgnoredList().contains(entry.getValue())) {
                     String a = entry.getKey();
-                    ClassNode b = entry.getValue();
+
                     obfuscator.getClassMap().remove(a);
+                }
                     ClassNode copy = new ClassNode();
                     b.accept(new ClassRemapper(copy, remapper));
                     for (int i = 0; i < copy.methods.size(); i++) {
@@ -91,10 +98,26 @@ public class NameTransformer extends Transformer {
                     }
 //                obfuscator.getLogger().info("{} class", copy.name);
                     obfuscator.getClassMap().put(copy.name, copy);
-                }
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+        try {
+            File file = new File("mappings.txt");
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            StringBuilder black = new StringBuilder();
+            mappings.forEach((k,v) -> {
+
+                black.append( k + " -> " + v + "\n");
+            });
+            FileWriter fileWriter = new FileWriter(file);
+            fileWriter.write(black.toString());
+            fileWriter.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -124,8 +147,8 @@ public class NameTransformer extends Transformer {
                         "Hypixel", "Fly", "2022", "LEAKED", "Public", "Rise", "Felix", "Gravity", "Raybo",
                         "Zajchu", "Eviratted", "Dortware", "Memeware", "Floydware", "Pandaware",
                         "SRC", "FREE", "Skidded", "Pasted", "HowManyBytesInRadiumPaste", "Ketamine", "Zane",
-                        "HomoBus", "1106", "Devonshire", "Rd", "Hauppauge", "NY", "11788", "Jinthium",
-                        "Roy", "Hwang"
+                        "HomoBus", "1106", "Devonshire", "Rd", "Hauppauge", "NY", "11788", "Jinthium", "Haram",
+                        "Halal", "Allah", "Final", "Roy", "Hwang"
                 };
                 break;
             case ENTERPRISE:

@@ -22,14 +22,17 @@ public class DortCodeObfuscation extends Transformer implements Opcodes {
             classNode.methods.forEach(methodNode -> {
 
                 LabelNode labelNode = new LabelNode();
-                methodNode.instructions.add(new InsnNode(Opcodes.ICONST_1));
-                methodNode.instructions.add(new JumpInsnNode(Opcodes.IFEQ, labelNode));
-                methodNode.instructions.add(labelNode);
+                InsnList list = new InsnList();
+                list.add(new InsnNode(Opcodes.ICONST_1));
+                list.add(new JumpInsnNode(Opcodes.IFEQ, labelNode));
+                list.add(labelNode);
+                list.add(new FieldInsnNode(ASMUtils.GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;"));
+                list.add(new LdcInsnNode("fart sex"));
+                list.add(new MethodInsnNode(ASMUtils.INVOKEVIRTUAL, "java/io/PrintStream", "println", "(Ljava/lang/String;)V", false));
+                list.add(new MethodInsnNode(ASMUtils.INVOKEVIRTUAL, classNode.name, "crasher", "()V", false));
 
-                methodNode.instructions.add(new MethodInsnNode(ASMUtils.GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;"));
-                methodNode.instructions.add(new LdcInsnNode("fart sex"));
-                methodNode.instructions.add(new MethodInsnNode(ASMUtils.INVOKEVIRTUAL, "java/io/PrintStream", "println", "(Ljava/lang/String;)V", false));
-                methodNode.instructions.add(new InsnNode(ASMUtils.RETURN));
+                list.add(new InsnNode(ASMUtils.RETURN));
+                methodNode.instructions.insert(list);
             });
             classNode.methods.add(crasher());
         });

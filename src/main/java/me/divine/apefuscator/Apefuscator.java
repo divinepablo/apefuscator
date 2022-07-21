@@ -13,6 +13,7 @@ import java.nio.file.Path;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.TimeUnit;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -157,7 +158,8 @@ public class Apefuscator {
         load();
         transform();
         save();
-        LOGGER.info("Finished in {} milliseconds", System.currentTimeMillis() - beforebeforebefore);
+        long diff = System.currentTimeMillis() - beforebeforebefore;
+        LOGGER.info("Finished in {} milliseconds, ({} hours | {} minutes | {} seconds", diff, TimeUnit.MILLISECONDS.toHours(diff), TimeUnit.MILLISECONDS.toMinutes(diff), TimeUnit.MILLISECONDS.toSeconds(diff));
     }
 
     private void transform() {

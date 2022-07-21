@@ -29,7 +29,7 @@ public class WrapperMethodTransformer extends me.divine.apefuscator.transformers
         obfuscator.getClasses().forEach(classNode -> {
             List<MethodNode> nigger = new ArrayList<>();
             classNode.methods.forEach(methodNode -> {
-                if (!methodNode.name.equals("<init>") && !methodNode.name.equals("<clinit>") && !methodNode.name.equals("<cinit>")) {
+                for (int z = 0; z < 5; z++) {
                     StringBuilder a = new StringBuilder();
                     for (int i = 0; i < 50; i++) {
                         for (int j = 0; j < 12; j++) {

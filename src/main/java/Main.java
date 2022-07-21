@@ -9,19 +9,16 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Loading Apefuscator v1.0");
         Apefuscator.builder()
-                .readerFlag(ClassReader.EXPAND_FRAMES)
-                .writerFlag(ClassWriter.COMPUTE_MAXS)
-//                .input(Path.of("test", "input", "elloWorld.jar"))
+                .readerFlag(ClassReader.SKIP_FRAMES)
+                .writerFlag(0)
                 .input(Path.of("test", "Sleek.jar"))
                 .output(Path.of("test", "Aped-Sleek.jar"))
-//                .addTransformer(new MathTransformer())
-                .ignored("com", "kotlin", "org", "fr", "net/minecraft/client/main", "javassist", "shadersmod", "de", "javax")
-//                .addTransformer(new ObjectiferTransformer())
-//                .addTransformer(new DortCodeObfuscation())
-                .addTransformer(new NameTransformer(NameTransformer.TROLL))
-                .addTransformer(new SourceFileTransformer(true))
+                .ignored("com", "kotlin", "org", "fr", "net/minecraft/client/main", "javassist", "shadersmod", "de", "javax", "paulscode", "joptsimple", "net/minecraft/server/management")
+//
+//                .addTransformer(new NameTransformer(NameTransformer.TROLL))
+                .addTransformer(new WrapperMethodTransformer())
+                .addTransformer(new WrapperMethodTransformer())
 
-//                .addTransformer(new WrapperMethodTransformer())
                 .build()
                 .start();  // start the apefuscator
 

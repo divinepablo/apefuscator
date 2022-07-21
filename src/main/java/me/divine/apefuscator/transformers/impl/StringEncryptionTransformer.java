@@ -9,15 +9,12 @@ import org.objectweb.asm.tree.*;
 
 public class StringEncryptionTransformer extends Transformer {
 
-    private String pass;
+
+
+
 
     public StringEncryptionTransformer() {
-        this("monkeyapeballs");
-    }
-
-    public StringEncryptionTransformer(String pass) {
         super("String Encryption", "Encrypts strings with a key");
-        this.pass = pass;
     }
 
     @Override
