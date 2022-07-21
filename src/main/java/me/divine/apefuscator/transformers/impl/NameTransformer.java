@@ -54,7 +54,7 @@ public class NameTransformer extends Transformer {
                 } else {
                     obfuscator.getLogger().info("Found main method in class {}", classNode.name);
                 }
-                if (canRename(classNode, methodNode)) {
+                if (canRename(classNode, methodNode, obfuscator)) {
                     String key = String.format("%s.%s%s", classNode.name, methodNode.name, methodNode.desc);
                     if (!ASMUtils.isMethodFromSuperclass(obfuscator.getClass(classNode.superName), methodNode)) {
                         mappings.put(key, getName(15));
@@ -134,9 +134,12 @@ public class NameTransformer extends Transformer {
     }
 
 
-    private boolean canRename(ClassNode parent, MethodNode methodNode) {
+    private boolean canRename(ClassNode parent, MethodNode methodNode, Apefuscator obfuscator) {
         if (!Objects.equals(methodNode.name, "main") && !methodNode.name.startsWith("<") && !ASMUtils.isAccess(methodNode.access, Opcodes.ACC_NATIVE)) {
-            return mappings.containsKey(String.format("%s.%s%s", parent.name, methodNode.name, methodNode.desc));
+            if (parent.outerClass == null || obfuscator.getClassNotIfIgnored(parent.outerClass) == null) {
+                return mappings.containsKey(String.format("%s.%s%s", parent.name, methodNode.name, methodNode.desc));
+            }
+
         }
         return false;
     }

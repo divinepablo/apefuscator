@@ -212,6 +212,8 @@ public class Apefuscator {
 
     public ClassNode getClass(String name) {
         return classes.values().stream().filter(classNode -> classNode.name.equals(name)).findFirst().orElse(null);
+    }public ClassNode getClassNotIfIgnored(String name) {
+        return classes.values().stream().filter(classNode -> classNode.name.equals(name) && !ignoredList.contains(classNode)).findFirst().orElse(null);
     }
 
 
