@@ -16,7 +16,7 @@ public class SourceFileTransformer extends Transformer {
             if (className) {
                 classNode.sourceFile = classNode.name + ".java";
             } else {
-                classNode.sourceFile = "     " + ".java";
+                classNode.sourceFile = "";
             }
             // literally that easy
         });

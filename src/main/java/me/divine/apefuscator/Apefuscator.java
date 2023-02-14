@@ -28,6 +28,7 @@ public class Apefuscator {
     private final Path input;
     private final Path output;
     private final ArrayList<Transformer> transformers = new ArrayList<>();
+    private final CopyOnWriteArrayList<String> hi = new CopyOnWriteArrayList<>();
     private final CopyOnWriteArrayList<String> ignoredStrings = new CopyOnWriteArrayList<>();
     private final CopyOnWriteArrayList<String> onlyIncluded = new CopyOnWriteArrayList<>();
     private boolean onlyIncluding;
@@ -77,18 +78,12 @@ public class Apefuscator {
                     classes.put(classNode.name, classNode);
                     originalClasses.put(classNode.name, ClassUtil.copy(classNode)); //yes
 
-                    if (onlyIncluding) {
-                        for (String ignoredString : onlyIncluded) {
-                            if (!classNode.name.startsWith(ignoredString)|| !classNode.name.equals(ignoredString)) {
-                                ignoredList.add(classNode);
-                                ignoredStrings.add(classNode.name);
-                            }
-                        }
-                    }
+//
                     for (String ignoredString : ignoredStrings) {
                         if (classNode.name.equals(ignoredString) || classNode.name.startsWith(ignoredString)) {
                             ignoredList.add(classNode);
-                            ignoredStrings.add(classNode.name);
+                            hi.add(classNode.name);
+//                            ignoredStrings.add(classNode.name);
                         }
                     }
 
@@ -105,7 +100,8 @@ public class Apefuscator {
             }
         });
         LOGGER.info("Loaded input file: {}\n", input);
-        LOGGER.info("Ignoring {}/{} classes", ignoredList.size(), classes.size());
+        LOGGER.info("Loaded {} classes", classes.size());
+        LOGGER.info("Ignoring {} classes", ignoredList.size());
     }
 
     private void save() {
@@ -188,19 +184,18 @@ public class Apefuscator {
 
     public Map<String, ClassNode> classes() {
         Map<String, ClassNode> classes = new ConcurrentHashMap<>(this.classes);
-        classes.keySet().forEach(key -> {
-            if (ignoredStrings.contains(key)) {
-                classes.remove(key);
-            }
-        });
+        for (Map.Entry<String, ClassNode> entry : classes.entrySet()) {
+            if (ignoredList.contains(entry.getValue()))
+                classes.remove(entry.getKey());
+        }
         return classes;
-    }    public Map<String, ClassNode> allClasses() {
+    }    public Map<String, ClassNode> getClasses2() {
         //        classes.keySet().forEach(key -> {
 //            if (ignoredStrings.contains(key)) {
 //                classes.remove(key);
 //            }
 //        });
-        return new ConcurrentHashMap<>(this.classes);
+        return this.classes;
     }
 
 
@@ -211,7 +206,7 @@ public class Apefuscator {
     }
 
     public ClassNode getClass(String name) {
-        return classes.values().stream().filter(classNode -> classNode.name.equals(name)).findFirst().orElse(null);
+        return classes.values().stream().filter(classNode -> classNode.name.equalsIgnoreCase(name)).findFirst().orElse(null);
     }public ClassNode getClassNotIfIgnored(String name) {
         return classes.values().stream().filter(classNode -> classNode.name.equals(name) && !ignoredList.contains(classNode)).findFirst().orElse(null);
     }
