@@ -26,8 +26,4 @@ public class Main {
                 .start();  // start the apefuscator
 
     }
-
-    public void monk(Apefuscator apefuscator) {
-        System.out.println(apefuscator);
-    }
 }
