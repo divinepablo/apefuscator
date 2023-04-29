@@ -1,12 +1,10 @@
 package me.divine.apefuscator.transformers.impl;
 
 import me.divine.apefuscator.Apefuscator;
-import me.divine.apefuscator.utils.ASMUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
-import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.*;
 
 public class TestTransformer extends me.divine.apefuscator.transformers.Transformer implements Opcodes {
@@ -21,7 +19,7 @@ public class TestTransformer extends me.divine.apefuscator.transformers.Transfor
 
     @Override
     public void transform(Apefuscator obfuscator) {
-        obfuscator.getClasses().forEach(classNode -> {
+        obfuscator.classes().forEach(classNode -> {
             MethodVisitor mv = classNode.visitMethod(ACC_PUBLIC, "hi", "()V", null, null);
             mv.visitCode();
             LabelNode hi2 = new LabelNode();

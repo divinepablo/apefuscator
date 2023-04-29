@@ -2,6 +2,7 @@ package me.divine.apefuscator.transformers.impl;
 
 import me.divine.apefuscator.Apefuscator;
 import me.divine.apefuscator.utils.ASMUtils;
+import me.divine.apefuscator.utils.ClassUtil;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.logging.log4j.LogManager;
@@ -9,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.*;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -16,35 +18,37 @@ import java.util.Random;
 public class JarFillerTransformer extends me.divine.apefuscator.transformers.Transformer {
 
     Logger LOGGER = LogManager.getLogger(JarFillerTransformer.class);
-    private int amount = 1;
-    private final Random random = new Random();
-    public JarFillerTransformer() {
-        super("JunkCode", "Generates junk funny");
-    }
+    private final int amount;
+    private final SecureRandom random = new SecureRandom();
     public JarFillerTransformer(int amount) {
-        this();
+        super("JunkCode", "Generates junk funny");
         this.amount = amount;
     }
+    public JarFillerTransformer() {
+        this(1);
+    }
+
 
     @Override
     public void transform(Apefuscator obfuscator) {
         List<ClassNode> ape = new ArrayList<>();
-        obfuscator.getClasses().forEach(classNode -> {
+        obfuscator.classes().forEach(classNode -> {
             List<MethodNode> nigger = new ArrayList<>();
             classNode.methods.forEach(methodNode -> {
-                for (int i = 0; i < amount; i++) {
+                for (int i = 0; i < 1; i++) {
                     nigger.add(createMethod());
                 }
             });
             classNode.methods.addAll(nigger);
-//            for (int i = 0; i < amount; i++) {
-//                ClassNode classNode1 = new ClassNode();
-//                classNode1.accept(classNode);
-//                classNode1.name = "monkey" + (random.nextInt() * 100000);
-//                classNode1.methods.clear();
-//                classNode1.methods.addAll(nigger);
-//                ape.add(classNode1);
-//            }
+            for (int i = 0; i < amount; i++) {
+
+                ClassNode classNode1 = ClassUtil.copy(classNode);
+                classNode1.name = "monkey" + (random.nextInt()* (0x13333337 - 0x1337) + 0x1337);
+                classNode1.fields.clear();
+                classNode1.methods.clear();
+                classNode1.methods.addAll(nigger);
+                ape.add(classNode1);
+            }
 
 
         });

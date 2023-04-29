@@ -2,7 +2,7 @@
 /.idea/
 /.attach_pid19121
 /Archive.zip
-/irc.jar
+/input/irc.jar
 /Main.java
 /Main.class
 /mappings.json
@@ -11,3 +11,5 @@
 /deobfuscator.log
 /test/
 /out/
+input/
+output/

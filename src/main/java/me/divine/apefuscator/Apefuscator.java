@@ -14,6 +14,8 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -31,10 +33,14 @@ public class Apefuscator {
     private final CopyOnWriteArrayList<String> hi = new CopyOnWriteArrayList<>();
     private final CopyOnWriteArrayList<String> ignoredStrings = new CopyOnWriteArrayList<>();
     private final CopyOnWriteArrayList<String> onlyIncluded = new CopyOnWriteArrayList<>();
-    private boolean onlyIncluding;
     private final CopyOnWriteArrayList<ClassNode> ignoredList = new CopyOnWriteArrayList<>();
     private final int readerMode;
     private final int writerMode;
+    private String mainClass = "";
+
+    public String getMainClass() {
+        return mainClass;
+    }
 
     public CopyOnWriteArrayList<String> getIgnoredStrings() {
         return ignoredStrings;
@@ -57,7 +63,6 @@ public class Apefuscator {
         this.ignoredStrings.addAll(builder.ignored);
         this.readerMode = builder.read;
         this.writerMode = builder.writer;
-        this.onlyIncluding = builder.onlyIncluding;
         this.onlyIncluded.addAll(builder.onlyIncluded);
 
         System.out.println();
@@ -90,6 +95,14 @@ public class Apefuscator {
 
                 } else {
                     files.put(name, data);
+                    if (name.contains("MANIFEST")) {
+                        final String regex = "Main-Class: (.*)";
+                        final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
+                        final Matcher matcher = pattern.matcher(new String(data));
+                        while (matcher.find()) {
+                            mainClass = matcher.group(1);
+                        }
+                    }
                 }
             } catch (Exception e) {
                 LOGGER.error("Could not load class: {}, adding as file", name);
@@ -182,49 +195,37 @@ public class Apefuscator {
         LOGGER.info("Finished transforming classes in {} milliseconds", System.currentTimeMillis() - beforebefore);
     }
 
-    public Map<String, ClassNode> classes() {
+    public Map<String, ClassNode> getClasses() {
         Map<String, ClassNode> classes = new ConcurrentHashMap<>(this.classes);
         for (Map.Entry<String, ClassNode> entry : classes.entrySet()) {
             if (ignoredList.contains(entry.getValue()))
                 classes.remove(entry.getKey());
         }
         return classes;
-    }    public Map<String, ClassNode> getClasses2() {
-        //        classes.keySet().forEach(key -> {
-//            if (ignoredStrings.contains(key)) {
-//                classes.remove(key);
-//            }
-//        });
-        return this.classes;
     }
-
-
-    public Collection<ClassNode> getClasses() {
+    public Collection<ClassNode> classes() {
         Collection<ClassNode> classes = new ArrayList<>(this.classes.values());
         classes.removeIf(ignoredList::contains);
         return classes;
     }
-
     public ClassNode getClass(String name) {
         return classes.values().stream().filter(classNode -> classNode.name.equalsIgnoreCase(name)).findFirst().orElse(null);
-    }public ClassNode getClassNotIfIgnored(String name) {
+    }
+    public ClassNode getClassNotIfIgnored(String name) {
         return classes.values().stream().filter(classNode -> classNode.name.equals(name) && !ignoredList.contains(classNode)).findFirst().orElse(null);
     }
 
-
-
-
-    public Map<String, ClassNode> getOriginalClasses() {
-        return originalClasses;
-    }
     public Map<String, ClassNode> getClassMap() {
         return classes;
     }
 
-    public Map<String, byte[]> getFiles() {
-        return files;
-    }
 
+    public byte[] getFile(String name) {
+        return files.get(name);
+    }
+    public void setFile(String name, byte[] bytes) {
+        files.put(name, bytes);
+    }
     public Path getInput() {
         return input;
     }

@@ -1,28 +1,19 @@
-[19:15:43] [main/INFO] - Adding transformer: Renamer
-[19:15:43] [main/INFO] - Adding transformer: SourceFile
-[19:15:43] [main/WARN] - Output file already exist, data will be overwritten
-[19:15:43] [main/INFO] - Starting Apefuscator
-[19:15:43] [main/INFO] - Loading input file: test\Pasta Mafia.jar
-[19:15:45] [main/INFO] - Loaded input file: test\Pasta Mafia.jar
+[10:42:23] [main/INFO] - Adding transformer: JunkCode
+[10:42:23] [main/INFO] - Adding transformer: Objectifer
+[10:42:23] [main/WARN] - Output file already exist, data will be overwritten
+[10:42:23] [main/INFO] - Starting Apefuscator
+[10:42:23] [main/INFO] - Loading input file: input\irc.jar
+[10:42:24] [main/INFO] - Loaded input file: input\irc.jar
 
-[19:15:45] [main/INFO] - Loaded 3363 classes
-[19:15:45] [main/INFO] - Ignoring 1198 classes
-[19:15:45] [main/INFO] - Transforming classes
-[19:15:45] [main/INFO] - Using Renamer transformer
-[19:15:45] [main/INFO] - Finding all parents and subclasses
-[19:15:46] [main/INFO] - Renaming with mode 48
-[19:15:46] [main/INFO] - Generating mappings
-[19:15:48] [main/INFO] - Found main method in class test/Main
-[19:15:48] [main/INFO] - Found main method in class test/Main
-[19:15:50] [main/INFO] - Found main method in class Start
-[19:16:03] [main/INFO] - Found main method in class net/minecraft/client/main/Main
-[19:16:10] [main/INFO] - Applying mappings
-[19:16:10] [main/INFO] - Saving mappings
-[19:16:10] [main/INFO] - Finished in 24753 milliseconds
-[19:16:10] [main/INFO] - Using SourceFile transformer
-[19:16:10] [main/INFO] - Finished in 22 milliseconds
-[19:16:10] [main/INFO] - Finished transforming classes in 24781 milliseconds
-[19:16:10] [main/INFO] - Saving output file: test\Aped-Pasta.jar
-[19:16:16] [main/INFO] - Saved output file: test\Aped-Pasta.jar
+[10:42:24] [main/INFO] - Loaded 1237 classes
+[10:42:24] [main/INFO] - Ignoring 1230 classes
+[10:42:24] [main/INFO] - Transforming classes
+[10:42:24] [main/INFO] - Using JunkCode transformer
+[10:42:24] [main/INFO] - Finished in 497 milliseconds
+[10:42:24] [main/INFO] - Using Objectifer transformer
+[10:42:24] [main/INFO] - Finished in 82 milliseconds
+[10:42:24] [main/INFO] - Finished transforming classes in 579 milliseconds
+[10:42:24] [main/INFO] - Saving output file: output\Aped-IRC.jar
+[10:44:25] [main/INFO] - Saved output file: output\Aped-IRC.jar
 
-[19:16:16] [main/INFO] - Finished in 33048 milliseconds, (0 hours | 0 minutes | 33 seconds)
+[10:44:25] [main/INFO] - Finished in 121664 milliseconds, (0 hours | 2 minutes | 121 seconds)

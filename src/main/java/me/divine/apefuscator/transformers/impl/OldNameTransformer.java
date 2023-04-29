@@ -89,7 +89,7 @@ public class OldNameTransformer extends me.divine.apefuscator.transformers.Trans
     @Override
     public void transform(Apefuscator obfuscator) {
 
-        obfuscator.getClasses().forEach(classNode -> {
+        obfuscator.classes().forEach(classNode -> {
             ClassNode superClass = getSuperClass(obfuscator, classNode);
 
             if (!isMain(classNode) && isClasses()) {
@@ -141,9 +141,9 @@ public class OldNameTransformer extends me.divine.apefuscator.transformers.Trans
 //        LOGGER.info("Finished renaming. Fixing methods and fields.");
         if (isClasses()) {
             LOGGER.info("Fixing methods.");
-            obfuscator.getClasses().forEach(this::fixMethods);
+            obfuscator.classes().forEach(this::fixMethods);
             LOGGER.info("Fixing fields.");
-            obfuscator.getClasses().forEach(this::fixFields);
+            obfuscator.classes().forEach(this::fixFields);
         }
     }
 

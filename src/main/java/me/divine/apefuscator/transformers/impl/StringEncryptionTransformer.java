@@ -23,7 +23,7 @@ public class StringEncryptionTransformer extends Transformer implements Opcodes 
     public void transform(Apefuscator obfuscator) {
         try {
             AtomicReference<ClassNode> stringEncrypt = new AtomicReference<>();
-            obfuscator.getClasses().forEach(classNode -> {
+            obfuscator.classes().forEach(classNode -> {
                 if (stringEncrypt.get() == null) {
                     ClassNode classNode1 = ClassUtil.copy(classNode);
                     stringEncrypt.set(classNode1);
@@ -35,7 +35,7 @@ public class StringEncryptionTransformer extends Transformer implements Opcodes 
                     classNode1.innerClasses.clear();
                     classNode1.fields.clear();
                     classNode1.methods.clear();
-                    obfuscator.getClasses2().put("lol/smd/ShaEKFather", classNode1);
+                    obfuscator.getClassMap().put("lol/smd/ShaEKFather", classNode1);
                     MethodNode method = new MethodNode(Opcodes.ACC_STATIC + Opcodes.ACC_PUBLIC, "monkey", ASMUtils.makeDescriptor(Type.getType(String.class), Type.getType(String.class)), null, null);
                     classNode1.methods.add(method);
                     makeDecryptFunction(method);

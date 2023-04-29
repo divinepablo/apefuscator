@@ -17,7 +17,7 @@ public class ObjectiferTransformer extends Transformer {
 
     @Override
     public void transform(Apefuscator obfuscator) {
-        obfuscator.getClasses().forEach(classNode -> {
+        obfuscator.classes().forEach(classNode -> {
             classNode.methods.forEach(methodNode -> {
                 methodNode.instructions.forEach(instruction -> {
 //                    if (instruction.getOpcode() == Opcodes.NEW) {

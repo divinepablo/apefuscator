@@ -4,8 +4,9 @@ import me.divine.apefuscator.Apefuscator;
 import me.divine.apefuscator.transformers.impl.ObjectiferTransformer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.objectweb.asm.Opcodes;
 
-public abstract class Transformer {
+public abstract class Transformer implements Opcodes {
     public abstract void transform(Apefuscator obfuscator);
     protected Logger LOGGER = LogManager.getLogger(Transformer.class);
     private final String name;

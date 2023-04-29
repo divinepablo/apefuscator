@@ -3,8 +3,8 @@ package me.divine.apefuscator.transformers.impl;
 import me.divine.apefuscator.Apefuscator;
 import me.divine.apefuscator.transformers.Transformer;
 import me.divine.apefuscator.utils.ASMUtils;
+import me.divine.apefuscator.utils.ClassUtil;
 import me.divine.apefuscator.utils.MemberRemapper;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.objectweb.asm.Opcodes;
@@ -15,12 +15,10 @@ import org.objectweb.asm.tree.MethodNode;
 
 import java.io.File;
 import java.io.FileWriter;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class NameTransformer extends Transformer {
     private final HashMap<String, String> mappings = new HashMap<>();
@@ -43,23 +41,7 @@ public class NameTransformer extends Transformer {
     @Override
     public void transform(Apefuscator obfuscator) {
         obfuscator.getLogger().info("Finding all parents and subclasses");
-        obfuscator.getClasses().forEach(classNode -> {
-                    if (classNode.superName != null) {
-                        if (obfuscator.getClass(classNode.superName) != null) {
-                            ClassNode superClass = obfuscator.getClass(classNode.superName);
-                            if (classesThing.containsKey(superClass)) {
-                                classesThing.get(superClass).add(classNode);
-                            } else {
-                                ArrayList<ClassNode> list = new ArrayList<>();
-                                list.add(classNode);
-                                classesThing.put(superClass, list);
-                            }
-                        }
-                    }
-        });
-        obfuscator.getLogger().info("Renaming with mode {}", namingMode);
-        obfuscator.getLogger().info("Generating mappings");
-        obfuscator.getClasses().forEach(classNode -> {
+        obfuscator.classes().forEach(classNode -> {
             if (classNode.superName != null) {
                 if (obfuscator.getClass(classNode.superName) != null) {
                     ClassNode superClass = obfuscator.getClass(classNode.superName);
@@ -72,18 +54,29 @@ public class NameTransformer extends Transformer {
                     }
                 }
             }
-            AtomicBoolean h = new AtomicBoolean(false);
+        });
+        obfuscator.getLogger().info("Renaming with mode {}", namingMode);
+        obfuscator.getLogger().info("Generating mappings");
+        obfuscator.classes().forEach(classNode -> {
+            if (classNode.superName != null) {
+                if (obfuscator.getClass(classNode.superName) != null) {
+                    ClassNode superClass = obfuscator.getClass(classNode.superName);
+                    if (classesThing.containsKey(superClass)) {
+                        classesThing.get(superClass).add(classNode);
+                    } else {
+                        ArrayList<ClassNode> list = new ArrayList<>();
+                        list.add(classNode);
+                        classesThing.put(superClass, list);
+                    }
+                }
+            }
             classNode.methods.forEach(methodNode -> {
                 if (!ASMUtils.isAccess(methodNode.access, Opcodes.ACC_PRIVATE)) {
                     methodNode.access &= ~Opcodes.ACC_PRIVATE;
                     methodNode.access &= ~Opcodes.ACC_PROTECTED;
                     methodNode.access |= Opcodes.ACC_PUBLIC;
                 }
-                if (!h.get()) {
-                    h.set(Objects.equals(methodNode.name, "main"));
-                } else {
-                    obfuscator.getLogger().info("Found main method in class {}", classNode.name);
-                }
+
                 if (methodNode.localVariables != null) {
                     methodNode.localVariables.forEach(local -> {
                         local.name = getName(5);
@@ -159,35 +152,44 @@ public class NameTransformer extends Transformer {
             classNode.access &= ~Opcodes.ACC_STATIC;
             classNode.access |= Opcodes.ACC_PUBLIC;
 
-            if (!h.get()) {
-                String name = "";
-                switch (namingMode) {
-                    case TROLL:
-                        name = "tear/x/eviate/hypixel/bypass/extraordinaire/";
-                        break;
-                    case ENTERPRISE:
-                        name = "enterprise/";
-                        break;
-                    case ALPHABET:
-                        name = "abc/";
-                        break;
-                    default:
-                        name = "hi/";
-                        break;
+            String name = "";
+            switch (namingMode) {
+                case TROLL:
+                    name = "tear/x/eviate/hypixel/bypass/extraordinaire/";
+                    break;
+                case ENTERPRISE:
+                    name = "enterprise/";
+                    break;
+                case ALPHABET:
+                    name = "abc/";
+                    break;
+                default:
+                    name = "hi/";
+                    break;
 
-                }
+            }
 
-                name += getName(1);
+            name += getName(1);
 //                String name = (namingMode == 47 ? "tear/x/eviate/hypixel/bypass/extraordinaire/" : "enterprise/") + getName(ThreadLocalRandom.current().nextInt(40, 100));
-                while (mappings.containsValue(name)) {
-                    name += getName(1);
-                }
+            while (mappings.containsValue(name)) {
+                name += getName(1);
+            }
 
-                if (classNode.name.contains("PlayerProfileCache"))
-                    return;
-                mappings.put(classNode.name, name);
+            if (classNode.name.contains("PlayerProfileCache"))
+                return;
+            mappings.put(classNode.name, name);
+            if (Objects.equals(classNode.name, obfuscator.getMainClass())) {
+                byte[] manifest = obfuscator.getFile("META-INF/MANIFEST.MF");
+
+                final Pattern pattern = Pattern.compile("Main-Class: (.*)");
+                final Matcher matcher = pattern.matcher(new String(manifest));
+
+                // The substituted value will be contained in the result variable
+                final String result = matcher.replaceAll("Main-Class: " + name);
+                obfuscator.setFile("META-INF/MANIFEST.MF", result.getBytes());
             }
         });
+
 
 //        obfuscator.getLogger().info("mappings {}", mappings);
         obfuscator.getLogger().info("Applying mappings");
@@ -198,8 +200,8 @@ public class NameTransformer extends Transformer {
 
     private void applyMappings(Apefuscator obfuscator) {
         Remapper remapper = new MemberRemapper(mappings);
-        for (Map.Entry<String, ClassNode> entry : obfuscator.getClasses2().entrySet()) {
-            if (!entry.getKey().contains("net")) return; // hardcoding minecraft shid
+        for (Map.Entry<String, ClassNode> entry : obfuscator.getClasses().entrySet()) {
+            if (entry.getKey().contains("net")) return; // hardcoding minecraft shid
             try {
                 ClassNode b = entry.getValue();
 
@@ -281,8 +283,8 @@ public class NameTransformer extends Transformer {
                         "SRC", "FREE", "Skidded", "Pasted", "HowManyBytesInRadiumPaste", "Ketamine", "Zane",
                         "HomoBus", "Devonshire", "Rd", "Hauppauge", "NY", "Jinthium", "Haram",
                         "Halal", "Allah", "Final", "Roy", "Hwang", "HomoBus", "Devonshire", "Rd",
-                        "Hauppauge", "NY", "Jinthium", "Roy", "Hwang","Beandog","Powered","By","Nefarious","Intent",
-                        "Diablo","IntentStore", "RCE", "Vincent","ImNotObfuscated","Rat", "Loader",
+                        "Hauppauge", "NY", "Jinthium", "Roy", "Hwang", "Beandog", "Powered", "By", "Nefarious", "Intent",
+                        "Diablo", "IntentStore", "RCE", "Vincent", "ImNotObfuscated", "Rat", "Loader",
                         "Robert", "Lopresti", "Ware"
                 };
                 break;
@@ -295,9 +297,9 @@ public class NameTransformer extends Transformer {
                         "Closeable", "Openable", "Main"};
                 break;
             case ALPHABET:
-                words = new String[] {
+                words = new String[]{
 //                        "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z",
-                        "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"
+                        "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
                 };
                 break;
         }

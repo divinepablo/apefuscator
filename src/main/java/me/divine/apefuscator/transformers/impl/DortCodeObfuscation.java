@@ -7,9 +7,6 @@ import org.objectweb.asm.Label;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.*;
-import sun.misc.Unsafe;
-
-import java.lang.reflect.Field;
 
 public class DortCodeObfuscation extends Transformer implements Opcodes {
     public DortCodeObfuscation() {
@@ -18,7 +15,7 @@ public class DortCodeObfuscation extends Transformer implements Opcodes {
 
     @Override
     public void transform(Apefuscator obfuscator) {
-        obfuscator.getClasses().forEach(classNode -> {
+        obfuscator.classes().forEach(classNode -> {
             classNode.methods.forEach(methodNode -> {
 
                 LabelNode labelNode = new LabelNode();

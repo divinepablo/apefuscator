@@ -20,7 +20,7 @@ public class MathTransformer extends Transformer {
 
     @Override
     public void transform(Apefuscator var1) {
-        var1.getClasses().forEach(clazz -> {
+        var1.classes().forEach(clazz -> {
             clazz.methods.forEach(method -> {
                 method.instructions.forEach(instruction -> {
                     if (instruction.getOpcode() == Opcodes.IMUL) {
